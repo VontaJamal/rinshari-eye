@@ -163,6 +163,8 @@ PRTMP
 )
   upsert_managed_block "$repo_path/.github/PULL_REQUEST_TEMPLATE.md" "<!-- RINSHARI-UI:START -->" "<!-- RINSHARI-UI:END -->" "$PR_BLOCK"
 
+  mkdir -p "$repo_path/.github/workflows"
+
   cat > "$repo_path/.github/workflows/design-preflight-check.yml" <<'YAML'
 name: Design Preflight Check
 
