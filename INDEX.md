@@ -1,7 +1,7 @@
 # Index
 
 ## Principles
-- Add principle docs in `principles/` and list them here.
+- `principles/000-foundations.md`: principle-first guidance for reusable UI/UX decisions with local identity preservation.
 
 ## Patterns
 - Add implementation patterns in `patterns/` and list them here.
