@@ -19,3 +19,29 @@ Before UI/UX work in downstream repos, complete all of the following:
    - Animation audit summary (files checked + keep/change decisions)
    - Motion intent map (effect -> user goal -> reduced-motion fallback -> expected value outcome)
    - AI intent map (task -> value hypothesis -> data class -> validation -> fallback)
+
+## Required Hard-Gate Sections (Blocking)
+
+### Whimsy & Motion Intent
+- Primary delight moment:
+- Secondary reinforcement moment:
+- Interaction feedback moments:
+
+### Motion Accessibility Parity
+- Reduced-motion equivalent behavior for each delight moment:
+- Non-motion fallback cues (copy/state/contrast/focus):
+
+### Cognitive Clarity
+- Why motion improves understanding (not decoration-only):
+- Overload risk and mitigation:
+
+### Onboarding Impact Scoring
+- Onboarding impact score (0-5):
+- Onboarding update decision (`none` | `copy-only` | `mini-tour`):
+- Feature onboarding manifest change (required when score >= 3):
+  - `featureId`:
+  - `version`:
+  - `trigger` (`viewer_open` | `feature_unlocked` | `first_use`):
+- Scoring rule:
+  - `0-2`: guided onboarding update is optional.
+  - `3-5`: onboarding manifest entry/version bump is required.

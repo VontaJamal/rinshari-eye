@@ -177,6 +177,23 @@ AGENTS
 ## Animation audit summary
 - 
 
+## Whimsy & motion quality bar
+- 
+
+## Accessibility parity for motion
+- 
+
+## Onboarding impact score (0-5)
+- 
+
+## Onboarding update decision
+- 
+
+## Feature onboarding manifest change
+- featureId:
+- version:
+- trigger:
+
 ## AI usage declaration
 - [ ] No AI used
 - [ ] AI used
@@ -237,6 +254,11 @@ jobs:
           printf '%s\n' "$body" | grep -q '^## Applied principles' || fail "Missing section: Applied principles"
           printf '%s\n' "$body" | grep -q '^## Site Soul alignment' || fail "Missing section: Site Soul alignment"
           printf '%s\n' "$body" | grep -q '^## Animation audit summary' || fail "Missing section: Animation audit summary"
+          printf '%s\n' "$body" | grep -q '^## Whimsy & motion quality bar' || fail "Missing section: Whimsy & motion quality bar"
+          printf '%s\n' "$body" | grep -q '^## Accessibility parity for motion' || fail "Missing section: Accessibility parity for motion"
+          printf '%s\n' "$body" | grep -q '^## Onboarding impact score (0-5)' || fail "Missing section: Onboarding impact score (0-5)"
+          printf '%s\n' "$body" | grep -q '^## Onboarding update decision' || fail "Missing section: Onboarding update decision"
+          printf '%s\n' "$body" | grep -q '^## Feature onboarding manifest change' || fail "Missing section: Feature onboarding manifest change"
           printf '%s\n' "$body" | grep -q '^## AI usage declaration' || fail "Missing section: AI usage declaration"
           printf '%s\n' "$body" | grep -q '^## AI intent and value' || fail "Missing section: AI intent and value"
           printf '%s\n' "$body" | grep -q '^## AI data handling' || fail "Missing section: AI data handling"
@@ -249,6 +271,11 @@ jobs:
           applied="$(printf '%s\n' "$body" | awk '/^## Applied principles/{flag=1;next}/^## /{flag=0}flag')"
           soul="$(printf '%s\n' "$body" | awk '/^## Site Soul alignment/{flag=1;next}/^## /{flag=0}flag')"
           animation="$(printf '%s\n' "$body" | awk '/^## Animation audit summary/{flag=1;next}/^## /{flag=0}flag')"
+          whimsy="$(printf '%s\n' "$body" | awk '/^## Whimsy & motion quality bar/{flag=1;next}/^## /{flag=0}flag')"
+          motion_a11y="$(printf '%s\n' "$body" | awk '/^## Accessibility parity for motion/{flag=1;next}/^## /{flag=0}flag')"
+          onboarding_score="$(printf '%s\n' "$body" | awk '/^## Onboarding impact score \(0-5\)/{flag=1;next}/^## /{flag=0}flag')"
+          onboarding_decision="$(printf '%s\n' "$body" | awk '/^## Onboarding update decision/{flag=1;next}/^## /{flag=0}flag')"
+          onboarding_manifest="$(printf '%s\n' "$body" | awk '/^## Feature onboarding manifest change/{flag=1;next}/^## /{flag=0}flag')"
           ai_usage="$(printf '%s\n' "$body" | awk '/^## AI usage declaration/{flag=1;next}/^## /{flag=0}flag')"
           ai_intent="$(printf '%s\n' "$body" | awk '/^## AI intent and value/{flag=1;next}/^## /{flag=0}flag')"
           ai_data="$(printf '%s\n' "$body" | awk '/^## AI data handling/{flag=1;next}/^## /{flag=0}flag')"
@@ -259,6 +286,11 @@ jobs:
           applied_clean="$(printf '%s' "$applied" | sed 's/[[:space:]-]//g')"
           soul_clean="$(printf '%s' "$soul" | sed 's/[[:space:]-]//g')"
           animation_clean="$(printf '%s' "$animation" | sed 's/[[:space:]-]//g')"
+          whimsy_clean="$(printf '%s' "$whimsy" | sed 's/[[:space:]-]//g')"
+          motion_a11y_clean="$(printf '%s' "$motion_a11y" | sed 's/[[:space:]-]//g')"
+          onboarding_score_clean="$(printf '%s' "$onboarding_score" | sed 's/[[:space:]-]//g')"
+          onboarding_decision_clean="$(printf '%s' "$onboarding_decision" | sed 's/[[:space:]-]//g')"
+          onboarding_manifest_clean="$(printf '%s' "$onboarding_manifest" | sed 's/[[:space:]-]//g')"
           ai_intent_clean="$(printf '%s' "$ai_intent" | sed 's/[[:space:]-]//g')"
           ai_data_clean="$(printf '%s' "$ai_data" | sed 's/[[:space:]-]//g')"
           ai_validation_clean="$(printf '%s' "$ai_validation" | sed 's/[[:space:]-]//g')"
@@ -270,6 +302,23 @@ jobs:
           [[ -n "$applied_clean" ]] || fail "Applied principles section cannot be empty"
           [[ -n "$soul_clean" ]] || fail "Site Soul alignment section cannot be empty"
           [[ -n "$animation_clean" ]] || fail "Animation audit summary section cannot be empty"
+          [[ -n "$whimsy_clean" ]] || fail "Whimsy & motion quality bar section cannot be empty"
+          [[ -n "$motion_a11y_clean" ]] || fail "Accessibility parity for motion section cannot be empty"
+          [[ -n "$onboarding_score_clean" ]] || fail "Onboarding impact score (0-5) section cannot be empty"
+          [[ -n "$onboarding_decision_clean" ]] || fail "Onboarding update decision section cannot be empty"
+          score_value="$(printf '%s\n' "$onboarding_score" | grep -Eo '[0-5]' | head -n 1 || true)"
+          [[ -n "$score_value" ]] || fail "Onboarding impact score must include a numeric value from 0 to 5"
+          decision_value="$(printf '%s\n' "$onboarding_decision" | tr '[:upper:]' '[:lower:]' | grep -Eo 'none|copy-only|mini-tour' | head -n 1 || true)"
+          [[ -n "$decision_value" ]] || fail "Onboarding update decision must include one of: none, copy-only, mini-tour"
+          if [[ "$score_value" -ge 3 ]]; then
+            [[ -n "$onboarding_manifest_clean" ]] || fail "Feature onboarding manifest change is required when onboarding impact score is 3-5"
+            feature_id_value="$(printf '%s\n' "$onboarding_manifest" | awk -F ':' 'tolower($0) ~ /featureid/ {gsub(/^[[:space:]]+|[[:space:]]+$/, \"\", $2); print $2; exit}')"
+            version_value="$(printf '%s\n' "$onboarding_manifest" | awk -F ':' 'tolower($0) ~ /version/ {gsub(/^[[:space:]]+|[[:space:]]+$/, \"\", $2); print $2; exit}')"
+            trigger_value="$(printf '%s\n' "$onboarding_manifest" | awk -F ':' 'tolower($0) ~ /trigger/ {gsub(/^[[:space:]]+|[[:space:]]+$/, \"\", $2); print $2; exit}')"
+            [[ -n "$feature_id_value" ]] || fail "Feature onboarding manifest change must include featureId when onboarding impact score is 3-5"
+            [[ -n "$version_value" ]] || fail "Feature onboarding manifest change must include version when onboarding impact score is 3-5"
+            [[ -n "$trigger_value" ]] || fail "Feature onboarding manifest change must include trigger when onboarding impact score is 3-5"
+          fi
           [[ "$ai_usage_checked_count" -ge 1 ]] || fail "AI usage declaration must check '- [x] No AI used' or '- [x] AI used'"
           [[ -n "$ai_intent_clean" ]] || fail "AI intent and value section cannot be empty"
           [[ -n "$ai_data_clean" ]] || fail "AI data handling section cannot be empty"
