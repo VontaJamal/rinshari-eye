@@ -13,3 +13,5 @@ Every principle/pattern update must satisfy:
 - [ ] Reduced-motion parity is explicitly mapped for each animated element.
 - [ ] Keyboard and screen-reader semantics remain equivalent in guided flows.
 - [ ] First-run walkthrough steps are constrained (default 5 or fewer unless justified).
+- [ ] Onboarding impact score (0-5) is explicitly recorded for UI changes.
+- [ ] Scores 3-5 include a feature onboarding manifest entry/version bump with trigger metadata.

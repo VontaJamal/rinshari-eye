@@ -27,3 +27,14 @@ Before UI/UX work in downstream repos, complete all of the following:
 ### Cognitive Clarity
 - Why motion improves understanding (not decoration-only):
 - Overload risk and mitigation:
+
+### Onboarding Impact Scoring
+- Onboarding impact score (0-5):
+- Onboarding update decision (`none` | `copy-only` | `mini-tour`):
+- Feature onboarding manifest change (required when score >= 3):
+  - `featureId`:
+  - `version`:
+  - `trigger` (`viewer_open` | `feature_unlocked` | `first_use`):
+- Scoring rule:
+  - `0-2`: guided onboarding update is optional.
+  - `3-5`: onboarding manifest entry/version bump is required.
