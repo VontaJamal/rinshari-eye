@@ -63,19 +63,26 @@ upsert_managed_block() {
   local start_marker="$2"
   local end_marker="$3"
   local content="$4"
+  local block_file
   mkdir -p "$(dirname "$file")"
   touch "$file"
+  block_file="$(mktemp)"
+  printf '%s\n' "$content" > "$block_file"
 
   if grep -q "$start_marker" "$file"; then
-    awk -v s="$start_marker" -v e="$end_marker" -v c="$content" '
-      BEGIN{inblock=0}
+    awk -v s="$start_marker" -v e="$end_marker" -v cfile="$block_file" '
+      function print_block(  line) {
+        while ((getline line < cfile) > 0) print line
+        close(cfile)
+      }
+      BEGIN { inblock=0 }
       {
-        if (index($0,s)) {
-          print c
+        if (index($0, s)) {
+          print_block()
           inblock=1
           next
         }
-        if (index($0,e)) {
+        if (index($0, e)) {
           inblock=0
           next
         }
@@ -84,11 +91,16 @@ upsert_managed_block() {
     ' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
   else
     if [[ -s "$file" ]]; then
-      printf '\n%s\n' "$content" >> "$file"
+      printf '\n' >> "$file"
+      cat "$block_file" >> "$file"
+      printf '\n' >> "$file"
     else
-      printf '%s\n' "$content" > "$file"
+      cat "$block_file" > "$file"
+      printf '\n' >> "$file"
     fi
   fi
+
+  rm -f "$block_file"
 }
 
 IFS=',' read -r -a REPO_PATHS <<< "$REPOS_CSV"
@@ -145,6 +157,7 @@ For any UI/UX change, agents must do all of the following before implementation:
    - Applied principles
    - Site Soul alignment
    - Animation audit summary
+   - AI intent map
 <!-- RINSHARI-UI:END -->
 AGENTS
 )
@@ -180,6 +193,27 @@ AGENTS
 - featureId:
 - version:
 - trigger:
+
+## AI usage declaration
+- [ ] No AI used
+- [ ] AI used
+
+## AI intent and value
+- 
+
+## AI data handling
+- 
+
+## AI validation and fallback
+- 
+
+## Engineering baseline compliance
+- [ ] TypeScript strict mode + Zod at boundaries
+- [ ] Python exception: Pydantic + Language Exception Record
+- [ ] Owner-approved non-TypeScript/non-Python exception + Language Exception Record
+
+## Engineering baseline rationale
+- 
 <!-- RINSHARI-UI:END -->
 PRTMP
 )
@@ -225,6 +259,12 @@ jobs:
           printf '%s\n' "$body" | grep -q '^## Onboarding impact score (0-5)' || fail "Missing section: Onboarding impact score (0-5)"
           printf '%s\n' "$body" | grep -q '^## Onboarding update decision' || fail "Missing section: Onboarding update decision"
           printf '%s\n' "$body" | grep -q '^## Feature onboarding manifest change' || fail "Missing section: Feature onboarding manifest change"
+          printf '%s\n' "$body" | grep -q '^## AI usage declaration' || fail "Missing section: AI usage declaration"
+          printf '%s\n' "$body" | grep -q '^## AI intent and value' || fail "Missing section: AI intent and value"
+          printf '%s\n' "$body" | grep -q '^## AI data handling' || fail "Missing section: AI data handling"
+          printf '%s\n' "$body" | grep -q '^## AI validation and fallback' || fail "Missing section: AI validation and fallback"
+          printf '%s\n' "$body" | grep -q '^## Engineering baseline compliance' || fail "Missing section: Engineering baseline compliance"
+          printf '%s\n' "$body" | grep -q '^## Engineering baseline rationale' || fail "Missing section: Engineering baseline rationale"
 
           printf '%s\n' "$body" | grep -Eq '^- \[[xX]\] Yes' || fail "You must check '- [x] Yes' under Design preflight completed"
 
@@ -236,6 +276,12 @@ jobs:
           onboarding_score="$(printf '%s\n' "$body" | awk '/^## Onboarding impact score \(0-5\)/{flag=1;next}/^## /{flag=0}flag')"
           onboarding_decision="$(printf '%s\n' "$body" | awk '/^## Onboarding update decision/{flag=1;next}/^## /{flag=0}flag')"
           onboarding_manifest="$(printf '%s\n' "$body" | awk '/^## Feature onboarding manifest change/{flag=1;next}/^## /{flag=0}flag')"
+          ai_usage="$(printf '%s\n' "$body" | awk '/^## AI usage declaration/{flag=1;next}/^## /{flag=0}flag')"
+          ai_intent="$(printf '%s\n' "$body" | awk '/^## AI intent and value/{flag=1;next}/^## /{flag=0}flag')"
+          ai_data="$(printf '%s\n' "$body" | awk '/^## AI data handling/{flag=1;next}/^## /{flag=0}flag')"
+          ai_validation="$(printf '%s\n' "$body" | awk '/^## AI validation and fallback/{flag=1;next}/^## /{flag=0}flag')"
+          engineering="$(printf '%s\n' "$body" | awk '/^## Engineering baseline compliance/{flag=1;next}/^## /{flag=0}flag')"
+          engineering_rationale="$(printf '%s\n' "$body" | awk '/^## Engineering baseline rationale/{flag=1;next}/^## /{flag=0}flag')"
 
           applied_clean="$(printf '%s' "$applied" | sed 's/[[:space:]-]//g')"
           soul_clean="$(printf '%s' "$soul" | sed 's/[[:space:]-]//g')"
@@ -245,6 +291,13 @@ jobs:
           onboarding_score_clean="$(printf '%s' "$onboarding_score" | sed 's/[[:space:]-]//g')"
           onboarding_decision_clean="$(printf '%s' "$onboarding_decision" | sed 's/[[:space:]-]//g')"
           onboarding_manifest_clean="$(printf '%s' "$onboarding_manifest" | sed 's/[[:space:]-]//g')"
+          ai_intent_clean="$(printf '%s' "$ai_intent" | sed 's/[[:space:]-]//g')"
+          ai_data_clean="$(printf '%s' "$ai_data" | sed 's/[[:space:]-]//g')"
+          ai_validation_clean="$(printf '%s' "$ai_validation" | sed 's/[[:space:]-]//g')"
+          ai_usage_checked_count="$(printf '%s\n' "$ai_usage" | grep -Ec '^- \[[xX]\] (No AI used|AI used)$' || true)"
+          ai_used_checked_count="$(printf '%s\n' "$ai_usage" | grep -Ec '^- \[[xX]\] AI used$' || true)"
+          engineering_rationale_clean="$(printf '%s' "$engineering_rationale" | sed 's/[[:space:]-]//g')"
+          engineering_checked_count="$(printf '%s\n' "$engineering" | grep -Ec '^- \[[xX]\] ' || true)"
 
           [[ -n "$applied_clean" ]] || fail "Applied principles section cannot be empty"
           [[ -n "$soul_clean" ]] || fail "Site Soul alignment section cannot be empty"
@@ -253,13 +306,10 @@ jobs:
           [[ -n "$motion_a11y_clean" ]] || fail "Accessibility parity for motion section cannot be empty"
           [[ -n "$onboarding_score_clean" ]] || fail "Onboarding impact score (0-5) section cannot be empty"
           [[ -n "$onboarding_decision_clean" ]] || fail "Onboarding update decision section cannot be empty"
-
           score_value="$(printf '%s\n' "$onboarding_score" | grep -Eo '[0-5]' | head -n 1 || true)"
           [[ -n "$score_value" ]] || fail "Onboarding impact score must include a numeric value from 0 to 5"
-
           decision_value="$(printf '%s\n' "$onboarding_decision" | tr '[:upper:]' '[:lower:]' | grep -Eo 'none|copy-only|mini-tour' | head -n 1 || true)"
           [[ -n "$decision_value" ]] || fail "Onboarding update decision must include one of: none, copy-only, mini-tour"
-
           if [[ "$score_value" -ge 3 ]]; then
             [[ -n "$onboarding_manifest_clean" ]] || fail "Feature onboarding manifest change is required when onboarding impact score is 3-5"
             feature_id_value="$(printf '%s\n' "$onboarding_manifest" | awk -F ':' 'tolower($0) ~ /featureid/ {gsub(/^[[:space:]]+|[[:space:]]+$/, \"\", $2); print $2; exit}')"
@@ -269,6 +319,16 @@ jobs:
             [[ -n "$version_value" ]] || fail "Feature onboarding manifest change must include version when onboarding impact score is 3-5"
             [[ -n "$trigger_value" ]] || fail "Feature onboarding manifest change must include trigger when onboarding impact score is 3-5"
           fi
+          [[ "$ai_usage_checked_count" -ge 1 ]] || fail "AI usage declaration must check '- [x] No AI used' or '- [x] AI used'"
+          [[ -n "$ai_intent_clean" ]] || fail "AI intent and value section cannot be empty"
+          [[ -n "$ai_data_clean" ]] || fail "AI data handling section cannot be empty"
+          [[ -n "$ai_validation_clean" ]] || fail "AI validation and fallback section cannot be empty"
+          if [[ "$ai_used_checked_count" -ge 1 ]]; then
+            [[ -n "$ai_data_clean" ]] || fail "AI data handling must be filled when '- [x] AI used' is selected"
+            [[ -n "$ai_validation_clean" ]] || fail "AI validation and fallback must be filled when '- [x] AI used' is selected"
+          fi
+          [[ "$engineering_checked_count" -ge 1 ]] || fail "Engineering baseline compliance must have at least one checked option"
+          [[ -n "$engineering_rationale_clean" ]] || fail "Engineering baseline rationale section cannot be empty"
 YAML
 
   cat > "$repo_path/.github/workflows/update-rinshari-ui-submodule.yml" <<'YAML'
