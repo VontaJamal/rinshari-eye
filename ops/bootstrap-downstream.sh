@@ -163,6 +163,12 @@ AGENTS
 
 ## Animation audit summary
 - 
+
+## Whimsy & motion quality bar
+- 
+
+## Accessibility parity for motion
+- 
 <!-- RINSHARI-UI:END -->
 PRTMP
 )
@@ -203,20 +209,28 @@ jobs:
           printf '%s\n' "$body" | grep -q '^## Applied principles' || fail "Missing section: Applied principles"
           printf '%s\n' "$body" | grep -q '^## Site Soul alignment' || fail "Missing section: Site Soul alignment"
           printf '%s\n' "$body" | grep -q '^## Animation audit summary' || fail "Missing section: Animation audit summary"
+          printf '%s\n' "$body" | grep -q '^## Whimsy & motion quality bar' || fail "Missing section: Whimsy & motion quality bar"
+          printf '%s\n' "$body" | grep -q '^## Accessibility parity for motion' || fail "Missing section: Accessibility parity for motion"
 
           printf '%s\n' "$body" | grep -Eq '^- \[[xX]\] Yes' || fail "You must check '- [x] Yes' under Design preflight completed"
 
           applied="$(printf '%s\n' "$body" | awk '/^## Applied principles/{flag=1;next}/^## /{flag=0}flag')"
           soul="$(printf '%s\n' "$body" | awk '/^## Site Soul alignment/{flag=1;next}/^## /{flag=0}flag')"
           animation="$(printf '%s\n' "$body" | awk '/^## Animation audit summary/{flag=1;next}/^## /{flag=0}flag')"
+          whimsy="$(printf '%s\n' "$body" | awk '/^## Whimsy & motion quality bar/{flag=1;next}/^## /{flag=0}flag')"
+          motion_a11y="$(printf '%s\n' "$body" | awk '/^## Accessibility parity for motion/{flag=1;next}/^## /{flag=0}flag')"
 
           applied_clean="$(printf '%s' "$applied" | sed 's/[[:space:]-]//g')"
           soul_clean="$(printf '%s' "$soul" | sed 's/[[:space:]-]//g')"
           animation_clean="$(printf '%s' "$animation" | sed 's/[[:space:]-]//g')"
+          whimsy_clean="$(printf '%s' "$whimsy" | sed 's/[[:space:]-]//g')"
+          motion_a11y_clean="$(printf '%s' "$motion_a11y" | sed 's/[[:space:]-]//g')"
 
           [[ -n "$applied_clean" ]] || fail "Applied principles section cannot be empty"
           [[ -n "$soul_clean" ]] || fail "Site Soul alignment section cannot be empty"
           [[ -n "$animation_clean" ]] || fail "Animation audit summary section cannot be empty"
+          [[ -n "$whimsy_clean" ]] || fail "Whimsy & motion quality bar section cannot be empty"
+          [[ -n "$motion_a11y_clean" ]] || fail "Accessibility parity for motion section cannot be empty"
 YAML
 
   cat > "$repo_path/.github/workflows/update-rinshari-ui-submodule.yml" <<'YAML'

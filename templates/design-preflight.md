@@ -12,3 +12,18 @@ Before UI/UX work in downstream repos, complete all of the following:
    - Applied principles
    - Site Soul alignment
    - Animation audit summary (files checked + keep/change decisions)
+
+## Required Hard-Gate Sections (Blocking)
+
+### Whimsy & Motion Intent
+- Primary delight moment:
+- Secondary reinforcement moment:
+- Interaction feedback moments:
+
+### Motion Accessibility Parity
+- Reduced-motion equivalent behavior for each delight moment:
+- Non-motion fallback cues (copy/state/contrast/focus):
+
+### Cognitive Clarity
+- Why motion improves understanding (not decoration-only):
+- Overload risk and mitigation:
