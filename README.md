@@ -4,6 +4,13 @@
 
 It exists to capture reusable design principles, not one-size-fits-all templates, so each product can keep its own identity while still sharing quality standards.
 
+## Identity Frame
+- `rinshari-ui` is the Double Rinnesharingan doctrine hub: broad capability with deliberate focus.
+- Governance runs through a separate Protagonist Commander (Monarch authority) and the Seven Saints system.
+- Orchestration is interleaved through Commander authority and Shared Operating Law instead of being a standalone saint.
+- Under Saint of Aesthetics, whimsical flourishes and animation are first-class only when they improve UX outcomes like delight, comprehension, usability, and retention.
+- Every saint now includes a `Script (AI Laws)` section to enforce pragmatic AI leverage: use AI heavily when useful, never by default, and always under safety and validation constraints.
+
 ## Purpose
 - Maintain a principle-first design knowledge base.
 - Translate learning inputs into durable guidance agents can apply.
@@ -46,6 +53,8 @@ This is a paraphrase-only repo for course-derived material.
 
 ## Agents Baseline Enforcement
 - Canonical `CORE-DOCTRINE` content is sourced from `templates/agents-baseline-doctrine.md`.
+- Canon doctrine is Commander-led Seven Saints governance with Saint of Scales and Saint of Value included.
+- Canon doctrine requires per-saint `Script (AI Laws)` with strict external AI data boundaries and explicit validation/fallback rules.
 - TypeScript is the default language baseline for new implementation work.
 - TypeScript strict mode and Zod boundary validation are required in TypeScript repos.
 - Python is a pre-approved exception with required Pydantic boundary validation.
