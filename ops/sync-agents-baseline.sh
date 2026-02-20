@@ -75,7 +75,7 @@ declare -a DEFAULT_REPO_ROOTS=(
   "/Users/vonta/Documents/Code Repos/link-tracker"
   "/Users/vonta/Documents/Code Repos/magic-lantern"
   "/Users/vonta/Documents/Code Repos/prediction-claw-culling-games"
-  "/Users/vonta/Documents/Code Repos/rinshari-ui"
+  "/Users/vonta/Documents/Code Repos/rinshari-eye"
   "/Users/vonta/Documents/Code Repos/synclink"
   "/Users/vonta/Documents/Code Repos/agent-orchestration-lab"
   "/Users/vonta/Documents/Code Repos/your-next-watch"

@@ -3,9 +3,9 @@
 - lesson_title: Seven Shadows System Doctrine
 - source_type: mixed
 - source_refs:
-  - /Users/vonta/Documents/Code Repos/rinshari-ui/templates/agents-baseline-doctrine.md
-  - /Users/vonta/Documents/Code Repos/rinshari-ui/AGENTS.md
-  - /Users/vonta/Documents/Code Repos/rinshari-ui/templates/design-preflight.md
+  - /Users/vonta/Documents/Code Repos/rinshari-eye/templates/agents-baseline-doctrine.md
+  - /Users/vonta/Documents/Code Repos/rinshari-eye/AGENTS.md
+  - /Users/vonta/Documents/Code Repos/rinshari-eye/templates/design-preflight.md
 - core_claims:
   - Commander authority is separate from shadow domains and resolves principle conflicts.
   - Orchestration is interleaved across shadow domains under Commander authority, not modeled as a separate shadow.

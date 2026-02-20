@@ -64,7 +64,7 @@ Use this contract sentence in planning docs or PRs:
 "This change operates under Commander authority and satisfies the Seven Shadows by linking aesthetics to UX outcomes, scales to complexity fit, and value to product impact."
 
 ## Downstream Usage
-1. Read `design/rinshari-ui/templates/design-preflight.md`.
-2. Read relevant `design/rinshari-ui/principles/*` docs.
+1. Read `design/rinshari-eye/templates/design-preflight.md`.
+2. Read relevant `design/rinshari-eye/principles/*` docs.
 3. Align with local `docs/site-soul-brief.md`.
 4. Report animation files checked and keep/change decisions before visual implementation.

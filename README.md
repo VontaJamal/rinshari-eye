@@ -1,11 +1,11 @@
-# rinshari-ui
+# rinshari-eye
 
-`rinshari-ui` is the central UI/UX design guide for VontaJamal repositories.
+`rinshari-eye` is the central UI/UX design guide for VontaJamal repositories.
 
 It exists to capture reusable design principles, not one-size-fits-all templates, so each product can keep its own identity while still sharing quality standards.
 
 ## Identity Frame
-- `rinshari-ui` is the Double Rinnesharingan doctrine hub: broad capability with deliberate focus.
+- `rinshari-eye` is the Double Rinnesharingan doctrine hub: broad capability with deliberate focus.
 - Governance runs through a separate Protagonist Commander (Monarch authority) and the Seven Shadows system.
 - Orchestration is interleaved through Commander authority and Shared Operating Law instead of being a standalone shadow.
 - Under Shadow of Aesthetics, whimsical flourishes and animation are first-class only when they improve UX outcomes like delight, comprehension, usability, and retention.
@@ -44,10 +44,10 @@ This is a paraphrase-only repo for course-derived material.
 - Store distilled guidance with source traces.
 
 ## Downstream Integration Model
-- Downstream repos mount this repo as submodule path `design/rinshari-ui`.
+- Downstream repos mount this repo as submodule path `design/rinshari-eye`.
 - Agents in downstream repos must read:
-  - `design/rinshari-ui/templates/design-preflight.md`
-  - relevant `design/rinshari-ui/principles/*`
+  - `design/rinshari-eye/templates/design-preflight.md`
+  - relevant `design/rinshari-eye/principles/*`
 - local `docs/site-soul-brief.md`
 - New guidance reaches downstream repos when the submodule pointer is bumped and merged.
 

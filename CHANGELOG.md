@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `rinshari-ui` are tracked here.
+All notable changes to `rinshari-eye` are tracked here.
 
 ## [Unreleased]
 - Canonized per-shadow `Script (AI Laws)` blocks across the Seven Shadows doctrine with a Commander-level AI framing rule: AI is a force multiplier under discipline, not judgment replacement.

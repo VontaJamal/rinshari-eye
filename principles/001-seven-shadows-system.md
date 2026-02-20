@@ -20,8 +20,8 @@ Because animation and whimsical flourishes are first-class under Shadow of Aesth
 - Doctrine drift: treating shadows as optional themes instead of enforceable delivery gates.
 
 ## Source Traces
-- `/Users/vonta/Documents/Code Repos/rinshari-ui/AGENTS.md`
-- `/Users/vonta/Documents/Code Repos/rinshari-ui/templates/agents-baseline-doctrine.md`
-- `/Users/vonta/Documents/Code Repos/rinshari-ui/templates/design-preflight.md`
-- `/Users/vonta/Documents/Code Repos/rinshari-ui/governance/checklist.md`
-- `/Users/vonta/Documents/Code Repos/rinshari-ui/README.md`
+- `/Users/vonta/Documents/Code Repos/rinshari-eye/AGENTS.md`
+- `/Users/vonta/Documents/Code Repos/rinshari-eye/templates/agents-baseline-doctrine.md`
+- `/Users/vonta/Documents/Code Repos/rinshari-eye/templates/design-preflight.md`
+- `/Users/vonta/Documents/Code Repos/rinshari-eye/governance/checklist.md`
+- `/Users/vonta/Documents/Code Repos/rinshari-eye/README.md`

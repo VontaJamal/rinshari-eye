@@ -103,8 +103,8 @@ Before promoting a lesson insight into a principle:
 5. Validate against `governance/checklist.md`.
 
 ## Downstream Awareness
-This repo is consumed as a submodule at `design/rinshari-ui` in downstream repos.
-This core doctrine is mandatory for all repos consuming this submodule (`design/rinshari-ui`), with only additive stricter local overrides allowed.
+This repo is consumed as a submodule at `design/rinshari-eye` in downstream repos.
+This core doctrine is mandatory for all repos consuming this submodule (`design/rinshari-eye`), with only additive stricter local overrides allowed.
 
 When changing shared guidance:
 1. Keep guidance principle-first, not overfitted to one project.

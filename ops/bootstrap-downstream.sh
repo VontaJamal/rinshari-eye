@@ -8,7 +8,7 @@ Usage:
 
 Example:
   bootstrap-downstream.sh \
-    --guide-url https://github.com/VontaJamal/rinshari-ui.git \
+    --guide-url https://github.com/VontaJamal/rinshari-eye.git \
     --repos /path/repoA,/path/repoB \
     --owner VontaJamal \
     --create-pr true
@@ -132,12 +132,12 @@ for raw_repo in "${REPO_PATHS[@]}"; do
   git -C "$repo_path" pull --ff-only origin "$default_branch"
   git -C "$repo_path" checkout -B "$bootstrap_branch"
 
-  if [[ ! -d "$repo_path/design/rinshari-ui" ]]; then
+  if [[ ! -d "$repo_path/design/rinshari-eye" ]]; then
     mkdir -p "$repo_path/design"
-    git -C "$repo_path" submodule add "$GUIDE_URL" design/rinshari-ui
+    git -C "$repo_path" submodule add "$GUIDE_URL" design/rinshari-eye
   else
-    git -C "$repo_path" submodule sync -- design/rinshari-ui || true
-    git -C "$repo_path" submodule update --init -- design/rinshari-ui || true
+    git -C "$repo_path" submodule sync -- design/rinshari-eye || true
+    git -C "$repo_path" submodule update --init -- design/rinshari-eye || true
   fi
 
   if [[ ! -f "$repo_path/docs/site-soul-brief.md" ]]; then
@@ -146,25 +146,25 @@ for raw_repo in "${REPO_PATHS[@]}"; do
   fi
 
   AGENTS_BLOCK=$(cat <<'AGENTS'
-<!-- RINSHARI-UI:START -->
+<!-- rinshari-eye:START -->
 ## Design Preflight Requirement (Managed)
 For any UI/UX change, agents must do all of the following before implementation:
-1. Read `design/rinshari-ui/templates/design-preflight.md`.
+1. Read `design/rinshari-eye/templates/design-preflight.md`.
 2. Audit repository animation/motion implementation first and note keep/change decisions.
-3. Read relevant files in `design/rinshari-ui/principles/`.
+3. Read relevant files in `design/rinshari-eye/principles/`.
 4. Read local `docs/site-soul-brief.md`.
 5. In task output/PR, provide:
    - Applied principles
    - Site Soul alignment
    - Animation audit summary
    - AI intent map
-<!-- RINSHARI-UI:END -->
+<!-- rinshari-eye:END -->
 AGENTS
 )
-  upsert_managed_block "$repo_path/AGENTS.md" "<!-- RINSHARI-UI:START -->" "<!-- RINSHARI-UI:END -->" "$AGENTS_BLOCK"
+  upsert_managed_block "$repo_path/AGENTS.md" "<!-- rinshari-eye:START -->" "<!-- rinshari-eye:END -->" "$AGENTS_BLOCK"
 
   PR_BLOCK=$(cat <<'PRTMP'
-<!-- RINSHARI-UI:START -->
+<!-- rinshari-eye:START -->
 ## Design preflight completed
 - [ ] Yes
 
@@ -214,10 +214,10 @@ AGENTS
 
 ## Engineering baseline rationale
 - 
-<!-- RINSHARI-UI:END -->
+<!-- rinshari-eye:END -->
 PRTMP
 )
-  upsert_managed_block "$repo_path/.github/PULL_REQUEST_TEMPLATE.md" "<!-- RINSHARI-UI:START -->" "<!-- RINSHARI-UI:END -->" "$PR_BLOCK"
+  upsert_managed_block "$repo_path/.github/PULL_REQUEST_TEMPLATE.md" "<!-- rinshari-eye:START -->" "<!-- rinshari-eye:END -->" "$PR_BLOCK"
 
   mkdir -p "$repo_path/.github/workflows"
 
@@ -331,8 +331,8 @@ jobs:
           [[ -n "$engineering_rationale_clean" ]] || fail "Engineering baseline rationale section cannot be empty"
 YAML
 
-  cat > "$repo_path/.github/workflows/update-rinshari-ui-submodule.yml" <<'YAML'
-name: Update rinshari-ui submodule
+  cat > "$repo_path/.github/workflows/update-rinshari-eye-submodule.yml" <<'YAML'
+name: Update rinshari-eye submodule
 
 on:
   schedule:
@@ -359,27 +359,27 @@ jobs:
           set -euo pipefail
           git submodule sync --recursive
           git submodule update --init --recursive
-          git -C design/rinshari-ui fetch origin main
-          git -C design/rinshari-ui checkout origin/main
+          git -C design/rinshari-eye fetch origin main
+          git -C design/rinshari-eye checkout origin/main
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: codex/bump-rinshari-ui-submodule
+          branch: codex/bump-rinshari-eye-submodule
           base: main
-          title: "chore: bump rinshari-ui submodule"
-          commit-message: "chore: bump rinshari-ui submodule"
+          title: "chore: bump rinshari-eye submodule"
+          commit-message: "chore: bump rinshari-eye submodule"
           body: |
-            Automated update of `design/rinshari-ui` to latest `main`.
+            Automated update of `design/rinshari-eye` to latest `main`.
           labels: |
             automation
             design-system
           add-paths: |
-            design/rinshari-ui
+            design/rinshari-eye
 YAML
 
-  git -C "$repo_path" add .gitmodules design/rinshari-ui docs/site-soul-brief.md AGENTS.md .github/PULL_REQUEST_TEMPLATE.md .github/workflows/design-preflight-check.yml .github/workflows/update-rinshari-ui-submodule.yml
+  git -C "$repo_path" add .gitmodules design/rinshari-eye docs/site-soul-brief.md AGENTS.md .github/PULL_REQUEST_TEMPLATE.md .github/workflows/design-preflight-check.yml .github/workflows/update-rinshari-eye-submodule.yml
 
   if git -C "$repo_path" diff --cached --quiet; then
     echo "No changes to commit for $repo_name"
@@ -388,7 +388,7 @@ YAML
     continue
   fi
 
-  git -C "$repo_path" commit -m "chore: bootstrap rinshari-ui design guide integration"
+  git -C "$repo_path" commit -m "chore: bootstrap rinshari-eye design guide integration"
   git -C "$repo_path" push -u origin "$bootstrap_branch"
 
   if [[ "$CREATE_PR" == "true" ]]; then
@@ -396,8 +396,8 @@ YAML
       --repo "$OWNER/$repo_name" \
       --base "$default_branch" \
       --head "$bootstrap_branch" \
-      --title "chore: bootstrap rinshari-ui design integration" \
-      --body "This PR bootstraps rinshari-ui integration with submodule, agent preflight policy, PR template fields, and CI workflows."; then
+      --title "chore: bootstrap rinshari-eye design integration" \
+      --body "This PR bootstraps rinshari-eye integration with submodule, agent preflight policy, PR template fields, and CI workflows."; then
       echo "PR may already exist for $repo_name; continuing"
     fi
   fi
