@@ -6,7 +6,7 @@ It exists to capture reusable design principles, not one-size-fits-all templates
 
 ## Identity Frame
 - `rinshari-eye` is the Double Rinnesharingan doctrine hub: broad capability with deliberate focus.
-- Governance runs through a separate Protagonist Commander (Monarch authority) and the Seven Shadows system.
+- Governance runs through a separate Protagonist Commander (Court authority) and the Seven Shadows system.
 - Orchestration is interleaved through Commander authority and Shared Operating Law instead of being a standalone shadow.
 - Under Shadow of Aesthetics, whimsical flourishes and animation are first-class only when they improve UX outcomes like delight, comprehension, usability, and retention.
 - Every shadow now includes a `Script (AI Laws)` section to enforce pragmatic AI leverage: use AI heavily when useful, never by default, and always under safety and validation constraints.

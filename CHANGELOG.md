@@ -8,7 +8,7 @@ All notable changes to `rinshari-eye` are tracked here.
 - Updated `templates/design-preflight.md` and `governance/checklist.md` with mandatory AI intent, data handling, validation, and fallback requirements.
 - Expanded downstream bootstrap PR contracts and generated `design-preflight-check.yml` enforcement with required AI declaration sections and AI-used gating.
 - Updated Seven Shadows principle, talk playbook, README framing, and lesson evidence to reflect pragmatic AI guardrails across all shadow scripts.
-- Migrated canonical doctrine from Five Shadows to Commander-led Seven Shadows, adding `Shadow of Scales` and `Shadow of Value` while keeping Monarch authority separate from shadow domains.
+- Migrated canonical doctrine from Five Shadows to Commander-led Seven Shadows, adding `Shadow of Scales` and `Shadow of Value` while keeping Court authority separate from shadow domains.
 - Updated Shadow of Aesthetics doctrine and design preflight contract to treat whimsical flourishes/animation as first-class only when tied to UX outcomes, reduced-motion behavior, and value impact.
 - Added `principles/001-seven-shadows-system.md` and indexed it as a promoted cross-repo principle.
 - Added `playbooks/seven-shadows-system-talk.md` as a reusable narrative and contracting artifact for downstream teams.

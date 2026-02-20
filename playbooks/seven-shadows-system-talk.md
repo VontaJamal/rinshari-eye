@@ -4,7 +4,7 @@
 Present the Double Rinnesharingan doctrine as a practical operating system for expert UI/design software development: high capability, deliberate focus, and measurable outcomes.
 
 ## Core Framing
-- The Protagonist Commander (Monarch authority) is separate from shadows and resolves doctrine conflicts.
+- The Protagonist Commander (Court authority) is separate from shadows and resolves doctrine conflicts.
 - The Seven Shadows are governance domains that make execution predictable across repositories.
 - Orchestration is interleaved across all shadow domains and directed by Commander authority.
 - Whimsical flourishes and animation are powerful only when they improve user outcomes and respect accessibility.
