@@ -193,7 +193,7 @@ check_file() {
     "AI is a force multiplier under command discipline, not a substitute for judgment." \
     "Shadow of Aesthetics" \
     "Shadow of Security" \
-    "Shadow of Accessibility" \
+    "Shadow of Access" \
     "Shadow of Testing" \
     "Shadow of Execution" \
     "Shadow of Scales" \

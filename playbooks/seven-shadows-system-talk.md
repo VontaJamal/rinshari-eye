@@ -22,7 +22,7 @@ Present the Double Rinnesharingan doctrine as a practical operating system for e
    - No raw secrets, credentials, or sensitive user data to external AI systems.
    - Redact or abstract prompts and attachments before model exposure.
    - Treat AI output as untrusted input and run standard security review.
-3. Shadow of Accessibility
+3. Shadow of Access
    Enforce WCAG 2.2 AA, keyboard-first behavior, semantic correctness, and reduced-motion compliance.
    Script (AI Laws):
    - AI can assist accessibility audits/content drafting but cannot be sole validator.
