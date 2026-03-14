@@ -65,20 +65,20 @@ trim() {
 }
 
 declare -a DEFAULT_REPO_ROOTS=(
-  "/Users/vonta/Documents/Code Repos/Agent_Intro"
-  "/Users/vonta/Documents/Code Repos/DJWS"
-  "/Users/vonta/Documents/Code Repos/NexusCrypto"
-  "/Users/vonta/Documents/Code Repos/Nexuslytics"
-  "/Users/vonta/Documents/Code Repos/VontaJamal"
-  "/Users/vonta/Documents/Code Repos/ck-at"
-  "/Users/vonta/Documents/Code Repos/ck-flash"
-  "/Users/vonta/Documents/Code Repos/link-tracker"
-  "/Users/vonta/Documents/Code Repos/magic-lantern"
-  "/Users/vonta/Documents/Code Repos/prediction-claw-culling-games"
-  "/Users/vonta/Documents/Code Repos/rinshari-eye"
-  "/Users/vonta/Documents/Code Repos/synclink"
-  "/Users/vonta/Documents/Code Repos/agent-orchestration-lab"
-  "/Users/vonta/Documents/Code Repos/your-next-watch"
+  "./Agent_Intro"
+  "./DJWS"
+  "./NexusCrypto"
+  "./Nexuslytics"
+  "./VontaJamal"
+  "./ck-at"
+  "./ck-flash"
+  "./link-tracker"
+  "./magic-lantern"
+  "./prediction-claw-culling-games"
+  "./rinshari-eye"
+  "./synclink"
+  "./agent-orchestration-lab"
+  "./your-next-watch"
 )
 
 declare -a REPO_ROOTS=()

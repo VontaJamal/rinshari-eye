@@ -15,7 +15,7 @@ Accessibility needs must be explicit at principle level so downstream implementa
 - Skipping explicit accessibility risk + mitigation in task/PR outputs.
 
 ## Source Traces
-- `/Users/vonta/Documents/Code Repos/rinshari-eye/README.md`
-- `/Users/vonta/Documents/Code Repos/rinshari-eye/templates/design-preflight.md`
-- `/Users/vonta/Documents/Code Repos/rinshari-eye/governance/checklist.md`
-- `/Users/vonta/Documents/Code Repos/rinshari-eye/AGENTS.md`
+- `./rinshari-eye/README.md`
+- `./rinshari-eye/templates/design-preflight.md`
+- `./rinshari-eye/governance/checklist.md`
+- `./rinshari-eye/AGENTS.md`
