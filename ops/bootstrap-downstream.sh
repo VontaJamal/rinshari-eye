@@ -151,12 +151,16 @@ for raw_repo in "${REPO_PATHS[@]}"; do
 For any UI/UX change, agents must do all of the following before implementation:
 1. Read `design/rinshari-eye/templates/design-preflight.md`.
 2. Audit repository animation/motion implementation first and note keep/change decisions.
-3. Read relevant files in `design/rinshari-eye/principles/`.
-4. Read local `docs/site-soul-brief.md`.
-5. In task output/PR, provide:
+3. Audit the active local component and token foundation and define the user-facing gap before external discovery.
+4. Read relevant files in `design/rinshari-eye/principles/` and follow `design/rinshari-eye/playbooks/reference-first-design-sop.md`.
+5. Read local `docs/site-soul-brief.md`.
+6. Inspect suitable official component catalogs and source indexes, then record keep/adapt/build/reject decisions before importing or inventing components.
+7. Verify provenance, license, attribution, dependencies, security, accessibility, motion, performance, and Site Soul fit for every selected external module.
+8. In task output/PR, provide:
    - Applied principles
    - Site Soul alignment
    - Animation audit summary
+   - Reference and reuse decision
    - AI intent map
 <!-- rinshari-eye:END -->
 AGENTS
@@ -176,6 +180,13 @@ AGENTS
 
 ## Animation audit summary
 - 
+
+## Reference and reuse decision
+- Outcome/gap:
+- Local foundation:
+- Sources inspected:
+- Candidate decisions:
+- Provenance and risk gates:
 
 ## Whimsy & motion quality bar
 - 
@@ -254,6 +265,7 @@ jobs:
           printf '%s\n' "$body" | grep -q '^## Applied principles' || fail "Missing section: Applied principles"
           printf '%s\n' "$body" | grep -q '^## Site Soul alignment' || fail "Missing section: Site Soul alignment"
           printf '%s\n' "$body" | grep -q '^## Animation audit summary' || fail "Missing section: Animation audit summary"
+          printf '%s\n' "$body" | grep -q '^## Reference and reuse decision' || fail "Missing section: Reference and reuse decision"
           printf '%s\n' "$body" | grep -q '^## Whimsy & motion quality bar' || fail "Missing section: Whimsy & motion quality bar"
           printf '%s\n' "$body" | grep -q '^## Accessibility parity for motion' || fail "Missing section: Accessibility parity for motion"
           printf '%s\n' "$body" | grep -q '^## Onboarding impact score (0-5)' || fail "Missing section: Onboarding impact score (0-5)"
@@ -271,6 +283,7 @@ jobs:
           applied="$(printf '%s\n' "$body" | awk '/^## Applied principles/{flag=1;next}/^## /{flag=0}flag')"
           soul="$(printf '%s\n' "$body" | awk '/^## Site Soul alignment/{flag=1;next}/^## /{flag=0}flag')"
           animation="$(printf '%s\n' "$body" | awk '/^## Animation audit summary/{flag=1;next}/^## /{flag=0}flag')"
+          reference="$(printf '%s\n' "$body" | awk '/^## Reference and reuse decision/{flag=1;next}/^## /{flag=0}flag')"
           whimsy="$(printf '%s\n' "$body" | awk '/^## Whimsy & motion quality bar/{flag=1;next}/^## /{flag=0}flag')"
           motion_a11y="$(printf '%s\n' "$body" | awk '/^## Accessibility parity for motion/{flag=1;next}/^## /{flag=0}flag')"
           onboarding_score="$(printf '%s\n' "$body" | awk '/^## Onboarding impact score \(0-5\)/{flag=1;next}/^## /{flag=0}flag')"
@@ -286,6 +299,7 @@ jobs:
           applied_clean="$(printf '%s' "$applied" | sed 's/[[:space:]-]//g')"
           soul_clean="$(printf '%s' "$soul" | sed 's/[[:space:]-]//g')"
           animation_clean="$(printf '%s' "$animation" | sed 's/[[:space:]-]//g')"
+          reference_clean="$(printf '%s' "$reference" | sed 's/[[:space:]-]//g')"
           whimsy_clean="$(printf '%s' "$whimsy" | sed 's/[[:space:]-]//g')"
           motion_a11y_clean="$(printf '%s' "$motion_a11y" | sed 's/[[:space:]-]//g')"
           onboarding_score_clean="$(printf '%s' "$onboarding_score" | sed 's/[[:space:]-]//g')"
@@ -302,6 +316,18 @@ jobs:
           [[ -n "$applied_clean" ]] || fail "Applied principles section cannot be empty"
           [[ -n "$soul_clean" ]] || fail "Site Soul alignment section cannot be empty"
           [[ -n "$animation_clean" ]] || fail "Animation audit summary section cannot be empty"
+          [[ -n "$reference_clean" ]] || fail "Reference and reuse decision section cannot be empty"
+          reference_gap_value="$(printf '%s\n' "$reference" | awk 'tolower($0) ~ /^- outcome\/gap:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          reference_local_value="$(printf '%s\n' "$reference" | awk 'tolower($0) ~ /^- local foundation:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          reference_sources_value="$(printf '%s\n' "$reference" | awk 'tolower($0) ~ /^- sources inspected:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          reference_decisions_value="$(printf '%s\n' "$reference" | awk 'tolower($0) ~ /^- candidate decisions:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          reference_risks_value="$(printf '%s\n' "$reference" | awk 'tolower($0) ~ /^- provenance and risk gates:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          [[ -n "$reference_gap_value" ]] || fail "Reference and reuse decision must identify the outcome/gap"
+          [[ -n "$reference_local_value" ]] || fail "Reference and reuse decision must identify the local foundation inspected"
+          [[ -n "$reference_sources_value" ]] || fail "Reference and reuse decision must identify sources inspected, including local-only when no external source was needed"
+          [[ -n "$reference_decisions_value" ]] || fail "Reference and reuse decision must identify candidate decisions"
+          printf '%s\n' "$reference_decisions_value" | grep -Eqi '(^|[^[:alpha:]])(keep|adapt|build|reject)([^[:alpha:]]|$)' || fail "Candidate decisions must include keep, adapt, build, or reject"
+          [[ -n "$reference_risks_value" ]] || fail "Reference and reuse decision must document provenance and risk gates"
           [[ -n "$whimsy_clean" ]] || fail "Whimsy & motion quality bar section cannot be empty"
           [[ -n "$motion_a11y_clean" ]] || fail "Accessibility parity for motion section cannot be empty"
           [[ -n "$onboarding_score_clean" ]] || fail "Onboarding impact score (0-5) section cannot be empty"

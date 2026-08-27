@@ -21,6 +21,7 @@ It exists to capture reusable design principles, not one-size-fits-all templates
 - Start with `AGENTS.md` in this repo for operating rules.
 - Use `templates/lesson-card.md` for new lesson ingestion.
 - Use `governance/checklist.md` before promoting or updating principles.
+- Use `playbooks/reference-first-design-sop.md` before material UI/UX implementation: inspect the local foundation, search suitable working references, and record keep/adapt/build decisions before importing or inventing components.
 
 ## Repository Structure
 - `principles/`: stable principle docs used across products.
@@ -36,6 +37,7 @@ It exists to capture reusable design principles, not one-size-fits-all templates
 - `templates/design-preflight.md`: preflight checklist downstream agents must read.
 - `templates/site-soul-brief.md`: per-project identity brief template.
 - `governance/checklist.md`: required quality gate for principle updates.
+- `playbooks/reference-first-design-sop.md`: required discovery and component-selection workflow for material downstream UI/UX work.
 
 ## Content Policy
 This is a paraphrase-only repo for course-derived material.
@@ -47,8 +49,10 @@ This is a paraphrase-only repo for course-derived material.
 - Downstream repos mount this repo as submodule path `design/rinshari-eye`.
 - Agents in downstream repos must read:
   - `design/rinshari-eye/templates/design-preflight.md`
+  - `design/rinshari-eye/playbooks/reference-first-design-sop.md`
   - relevant `design/rinshari-eye/principles/*`
-- local `docs/site-soul-brief.md`
+  - local `docs/site-soul-brief.md`
+- Downstream UI/UX work must report the active local foundation, references inspected, keep/adapt/build/reject decisions, source provenance and license, and integrated accessibility/motion/performance verification.
 - New guidance reaches downstream repos when the submodule pointer is bumped and merged.
 
 ## Agents Baseline Enforcement

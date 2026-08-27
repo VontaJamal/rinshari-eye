@@ -114,7 +114,10 @@ When changing shared guidance:
 Before downstream UI/UX edits:
 1. Perform a repository-wide animation/motion audit first.
 2. Resolve animation implications before visual layout/styling changes.
-3. Explicitly report animation files checked and keep/change decisions in task or PR output.
+3. Audit the active local component and token foundation and define the specific user-facing gaps before external discovery.
+4. Follow `playbooks/reference-first-design-sop.md`: inspect suitable official catalogs and source indexes, then record keep/adapt/build decisions before importing or inventing components.
+5. Verify provenance, license, attribution, dependencies, security, accessibility, motion, performance, and Site Soul fit for every selected external module.
+6. Explicitly report animation files checked, reference sources inspected, and keep/adapt/build decisions in task or PR output.
 
 ## File/Schema Contracts
 - Lesson card schema: `templates/lesson-card.md`

@@ -13,6 +13,12 @@ Every principle/pattern update must satisfy:
 - [ ] At least one failure mode/anti-pattern is documented.
 - [ ] Guidance remains principle-first (not rigidly template-locked).
 - [ ] Source trace is included.
+- [ ] The active local component, token, state, and test foundation was inspected before external discovery.
+- [ ] A specific user-facing gap and the assumption that would make the change unnecessary are documented.
+- [ ] Suitable official catalog/index surfaces were inspected without importing code during discovery.
+- [ ] Every candidate has a keep/adapt/build/reject decision and a concrete outcome difference.
+- [ ] Selected external modules have canonical source, accessed version or commit, license, attribution, dependency, security, performance, accessibility, motion, maintenance, and Site Soul notes.
+- [ ] The integrated product, not the source demo, supplies acceptance evidence.
 - [ ] Whimsical motion quality is intentional and directly aligned to user tasks.
 - [ ] Reduced-motion parity is explicitly mapped for each animated element.
 - [ ] Keyboard and screen-reader semantics remain equivalent in guided flows.

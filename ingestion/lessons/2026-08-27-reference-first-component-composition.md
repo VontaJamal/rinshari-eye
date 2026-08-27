@@ -1,0 +1,49 @@
+# Lesson Card: Reference-First Component Composition
+
+- lesson_title: Reference-First Component Composition
+- source_type: mixed
+- source_refs:
+  - https://x.com/EXM7777/status/2092250905655812121
+  - https://beautifului.dev/
+  - https://beui.dev/
+  - https://github.com/starc007/ui-components
+  - https://rareui.com/
+  - https://github.com/swamimalode07/rare-ui
+  - https://transitions.dev/
+  - https://transitions.dev/terms.html
+  - https://ui.shadcn.com/
+  - https://github.com/shadcn-ui/ui
+- core_claims:
+  - Agents produce stronger frontend work when they inspect relevant visual references and working component code before inventing a new interface from memory.
+  - Reference discovery must start after the user outcome, local design foundation, and specific interface gap are understood; a catalog does not decide what belongs in the product.
+  - Existing product components remain the first reuse option. External modules are candidates to keep, adapt, or reject, not a replacement design system.
+  - Copy-owned component models make adaptation easier, but every selected module still needs provenance, license, dependency, accessibility, motion, performance, and maintenance review.
+  - The useful pattern is compositional: search complete catalog or registry indexes where available, choose only modules that close an established gap, and restyle them into the product's Site Soul.
+- ui_effect_goal: Raise the visual and interaction quality of agent-built interfaces while keeping each product cohesive, accessible, maintainable, and recognizably its own.
+- evidence_items:
+  - The source post describes a component-Lego workflow: collect inspiration and working modules, expose their catalogs to the agent, and integrate the best-fitting code into the frontend foundation.
+  - shadcn/ui describes its open-code components as a foundation to customize, extend, and make one's own.
+  - beUI and Rare UI distribute editable React components through source or shadcn registries; their public repositories identify MIT licensing for the free catalogs.
+  - Transitions.dev supplies portable motion recipes with reduced-motion guards, while its terms distinguish product use from prohibited redistribution of the library itself.
+- do:
+  - Inventory the product's current components, tokens, states, and motion language before searching externally.
+  - Define the exact visual, interaction, or state gap that a reference must close.
+  - Use official catalog indexes, registries, agent-readable files, source repositories, and live previews to inspect the available set rather than relying only on a landing-page example.
+  - Record a keep, adapt, or build decision and the concrete difference it makes to the user outcome.
+  - Copy only the selected module, then align semantics, tokens, typography, spacing, states, motion, and responsive behavior with the local design system.
+- dont:
+  - Import a whole library because one demo looks impressive.
+  - Stitch together unrelated visual languages or let source defaults overwrite the Site Soul.
+  - Treat a public demo, an AI recommendation, or a reduced-motion claim as proof that the integrated result is accessible or performant.
+  - Copy code when the current product component already closes the gap unchanged or with a smaller modification.
+  - Use paid, unclear-license, or restricted source code without verifying that the intended use is allowed.
+- candidate_principles:
+  - principles/002-reference-before-invention.md
+- a11y_notes:
+  - External modules require independent keyboard, focus, semantic, screen-reader, contrast, pointer, touch, and reduced-motion verification after adaptation; catalog claims and demo behavior are not acceptance evidence.
+- promotion_status: promoted
+
+## Notes
+- The source post was published August 25, 2026 at 10:01 a.m. EDT.
+- Resource capabilities and terms were checked August 27, 2026 and must be checked again at adoption time.
+- This lesson preserves the compositional method without making any named catalog mandatory.
