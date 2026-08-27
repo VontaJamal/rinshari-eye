@@ -128,7 +128,7 @@ scheduled_body="$(
 )"
 check_body "$scheduled_body"
 
-if check_body $'## Design preflight completed\n- [x] Yes'; then
+if check_body $'## Design preflight completed\n- [x] Yes' 2>/dev/null; then
   echo "Incomplete PR body unexpectedly passed validation" >&2
   exit 1
 fi
