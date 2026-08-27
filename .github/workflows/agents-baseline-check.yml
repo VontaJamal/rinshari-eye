@@ -81,6 +81,7 @@ jobs:
           set -euo pipefail
 
           bash -n ops/bootstrap-downstream.sh
+          bash -n ops/test-bootstrap-downstream.sh
 
           for required_file in \
             ingestion/lessons/2026-08-27-reference-first-component-composition.md \
@@ -97,3 +98,12 @@ jobs:
           grep -Fq 'The integrated product, not the source demo' governance/checklist.md
           grep -Fq '## Reference and reuse decision' ops/bootstrap-downstream.sh
           grep -Fq 'Candidate decisions must include keep, adapt, build, or reject' ops/bootstrap-downstream.sh
+          grep -Fq 'No implementation-language change' ops/bootstrap-downstream.sh
+          grep -Fq -- '--body "$BOOTSTRAP_PR_BODY"' ops/bootstrap-downstream.sh
+          grep -Fq 'No AI is used; this is a deterministic git submodule update.' ops/bootstrap-downstream.sh
+          if grep -nE '[[:blank:]]+$' ops/bootstrap-downstream.sh; then
+            echo "Downstream bootstrap contains trailing whitespace" >&2
+            exit 1
+          fi
+
+          ops/test-bootstrap-downstream.sh

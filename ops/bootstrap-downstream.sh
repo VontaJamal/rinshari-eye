@@ -93,10 +93,8 @@ upsert_managed_block() {
     if [[ -s "$file" ]]; then
       printf '\n' >> "$file"
       cat "$block_file" >> "$file"
-      printf '\n' >> "$file"
     else
       cat "$block_file" > "$file"
-      printf '\n' >> "$file"
     fi
   fi
 
@@ -173,13 +171,13 @@ AGENTS
 - [ ] Yes
 
 ## Applied principles
-- 
+-
 
 ## Site Soul alignment
-- 
+-
 
 ## Animation audit summary
-- 
+-
 
 ## Reference and reuse decision
 - Outcome/gap:
@@ -189,16 +187,16 @@ AGENTS
 - Provenance and risk gates:
 
 ## Whimsy & motion quality bar
-- 
+-
 
 ## Accessibility parity for motion
-- 
+-
 
 ## Onboarding impact score (0-5)
-- 
+-
 
 ## Onboarding update decision
-- 
+-
 
 ## Feature onboarding manifest change
 - featureId:
@@ -210,25 +208,87 @@ AGENTS
 - [ ] AI used
 
 ## AI intent and value
-- 
+-
 
 ## AI data handling
-- 
+-
 
 ## AI validation and fallback
-- 
+-
 
 ## Engineering baseline compliance
 - [ ] TypeScript strict mode + Zod at boundaries
 - [ ] Python exception: Pydantic + Language Exception Record
 - [ ] Owner-approved non-TypeScript/non-Python exception + Language Exception Record
+- [ ] No implementation-language change
 
 ## Engineering baseline rationale
-- 
+-
 <!-- rinshari-eye:END -->
 PRTMP
 )
   upsert_managed_block "$repo_path/.github/PULL_REQUEST_TEMPLATE.md" "<!-- rinshari-eye:START -->" "<!-- rinshari-eye:END -->" "$PR_BLOCK"
+
+  BOOTSTRAP_PR_BODY=$(cat <<'PRBODY'
+## Design preflight completed
+- [x] Yes
+
+## Applied principles
+- `000 Foundations` and `002 Reference Before Invention`; this change installs the canonical design-governance contract without changing product UI.
+
+## Site Soul alignment
+- Adds the local Site Soul contract. Product-specific fields must be completed before later UI implementation.
+
+## Animation audit summary
+- Governance bootstrap only; no product animation or motion implementation changed.
+
+## Reference and reuse decision
+- Outcome/gap: Install one canonical, updateable design source and deterministic downstream evidence contract.
+- Local foundation: Existing repository instructions, pull-request template, workflows, and product code are preserved outside the managed integration surfaces.
+- Sources inspected: Canonical `VontaJamal/rinshari-eye` source and the target repository integration points.
+- Candidate decisions: keep existing product UI and adapt only governance, provenance, and review surfaces.
+- Provenance and risk gates: Exact upstream commit recorded by the gitlink; no runtime dependency or product behavior change.
+
+## Whimsy & motion quality bar
+- Not applicable; no rendered UI or motion changed.
+
+## Accessibility parity for motion
+- Not applicable; no rendered UI or motion changed.
+
+## Onboarding impact score (0-5)
+- 0
+
+## Onboarding update decision
+- none
+
+## Feature onboarding manifest change
+- featureId: not applicable
+- version: not applicable
+- trigger: not applicable
+
+## AI usage declaration
+- [x] No AI used
+- [ ] AI used
+
+## AI intent and value
+- No AI is used by the bootstrap script; it performs deterministic repository and git operations.
+
+## AI data handling
+- No data is sent to an AI system.
+
+## AI validation and fallback
+- Generated files, the pinned gitlink, and repository CI provide validation; a failed bootstrap preserves the prior default branch.
+
+## Engineering baseline compliance
+- [ ] TypeScript strict mode + Zod at boundaries
+- [ ] Python exception: Pydantic + Language Exception Record
+- [ ] Owner-approved non-TypeScript/non-Python exception + Language Exception Record
+- [x] No implementation-language change
+
+## Engineering baseline rationale
+- The pull request adds governance, documentation, workflows, and a git submodule pointer only.
+PRBODY
+)
 
   mkdir -p "$repo_path/.github/workflows"
 
@@ -397,7 +457,63 @@ jobs:
           title: "chore: bump rinshari-eye submodule"
           commit-message: "chore: bump rinshari-eye submodule"
           body: |
-            Automated update of `design/rinshari-eye` to latest `main`.
+            ## Design preflight completed
+            - [x] Yes
+
+            ## Applied principles
+            - `002 Reference Before Invention`; this automated change keeps the canonical design source current without changing product UI.
+
+            ## Site Soul alignment
+            - No visual surface changes. The repository-specific Site Soul remains authoritative.
+
+            ## Animation audit summary
+            - Submodule pointer only; no product animation or motion implementation changed.
+
+            ## Reference and reuse decision
+            - Outcome/gap: Keep the pinned design doctrine current with merged canonical guidance.
+            - Local foundation: Existing `design/rinshari-eye` integration and local Site Soul.
+            - Sources inspected: Canonical `VontaJamal/rinshari-eye` `origin/main`.
+            - Candidate decisions: keep the local design foundation and adapt only the pinned canonical commit.
+            - Provenance and risk gates: Exact upstream commit recorded by the gitlink; no runtime dependency or product behavior change.
+
+            ## Whimsy & motion quality bar
+            - Not applicable; no rendered UI or motion changed.
+
+            ## Accessibility parity for motion
+            - Not applicable; no rendered UI or motion changed.
+
+            ## Onboarding impact score (0-5)
+            - 0
+
+            ## Onboarding update decision
+            - none
+
+            ## Feature onboarding manifest change
+            - featureId: not applicable
+            - version: not applicable
+            - trigger: not applicable
+
+            ## AI usage declaration
+            - [x] No AI used
+            - [ ] AI used
+
+            ## AI intent and value
+            - No AI is used; this is a deterministic git submodule update.
+
+            ## AI data handling
+            - No data is sent to an AI system.
+
+            ## AI validation and fallback
+            - Git records the exact upstream commit; failed updates leave the existing pointer unchanged.
+
+            ## Engineering baseline compliance
+            - [ ] TypeScript strict mode + Zod at boundaries
+            - [ ] Python exception: Pydantic + Language Exception Record
+            - [ ] Owner-approved non-TypeScript/non-Python exception + Language Exception Record
+            - [x] No implementation-language change
+
+            ## Engineering baseline rationale
+            - The pull request changes only a git submodule pointer.
           labels: |
             automation
             design-system
@@ -423,7 +539,7 @@ YAML
       --base "$default_branch" \
       --head "$bootstrap_branch" \
       --title "chore: bootstrap rinshari-eye design integration" \
-      --body "This PR bootstraps rinshari-eye integration with submodule, agent preflight policy, PR template fields, and CI workflows."; then
+      --body "$BOOTSTRAP_PR_BODY"; then
       echo "PR may already exist for $repo_name; continuing"
     fi
   fi
