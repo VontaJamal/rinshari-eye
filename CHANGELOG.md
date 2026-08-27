@@ -3,6 +3,10 @@
 All notable changes to `rinshari-eye` are tracked here.
 
 ## [Unreleased]
+- Added promoted lesson `ingestion/lessons/2026-08-27-reference-first-component-composition.md` from the component-Lego design workflow and current primary-source catalog evidence.
+- Added `principles/002-reference-before-invention.md` and the mandatory `playbooks/reference-first-design-sop.md` so downstream agents inspect the active product and suitable component sources before choosing to keep, adapt, build, or reject.
+- Expanded design preflight and governance gates with reference discovery, provenance/license, dependency/security/performance, accessibility/motion, Site Soul, and integrated-product verification requirements.
+- Extended downstream bootstrap policy, pull-request evidence, and CI checks to require a non-empty reference and reuse decision.
 - Canonized per-shadow `Script (AI Laws)` blocks across the Seven Shadows doctrine with a Commander-level AI framing rule: AI is a force multiplier under discipline, not judgment replacement.
 - Added strict AI boundary law to doctrine enforcement (`No raw secrets, credentials, or sensitive user data to external AI systems.`) and wired it into baseline validators.
 - Updated `templates/design-preflight.md` and `governance/checklist.md` with mandatory AI intent, data handling, validation, and fallback requirements.

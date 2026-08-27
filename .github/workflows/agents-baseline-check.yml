@@ -74,3 +74,26 @@ jobs:
               exit 1
             }
           done
+
+      - name: Validate reference-first design contract
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          bash -n ops/bootstrap-downstream.sh
+
+          for required_file in \
+            ingestion/lessons/2026-08-27-reference-first-component-composition.md \
+            principles/002-reference-before-invention.md \
+            playbooks/reference-first-design-sop.md; do
+            [[ -s "$required_file" ]] || {
+              echo "Reference-first contract file is missing or empty: $required_file" >&2
+              exit 1
+            }
+          done
+
+          grep -Fq 'playbooks/reference-first-design-sop.md' AGENTS.md
+          grep -Fq '### Reference and Reuse Decision' templates/design-preflight.md
+          grep -Fq 'The integrated product, not the source demo' governance/checklist.md
+          grep -Fq '## Reference and reuse decision' ops/bootstrap-downstream.sh
+          grep -Fq 'Candidate decisions must include keep, adapt, build, or reject' ops/bootstrap-downstream.sh
