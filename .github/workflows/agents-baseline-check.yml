@@ -81,6 +81,7 @@ jobs:
           set -euo pipefail
 
           bash -n ops/bootstrap-downstream.sh
+          bash -n ops/test-bootstrap-downstream.sh
 
           for required_file in \
             ingestion/lessons/2026-08-27-reference-first-component-composition.md \
@@ -104,3 +105,5 @@ jobs:
             echo "Downstream bootstrap contains trailing whitespace" >&2
             exit 1
           fi
+
+          ops/test-bootstrap-downstream.sh
