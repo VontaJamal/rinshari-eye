@@ -3,6 +3,7 @@
 All notable changes to `rinshari-eye` are tracked here.
 
 ## [Unreleased]
+- Hardened downstream bootstrap output so generated templates pass diff hygiene, documentation-only changes have a truthful engineering-baseline option, and both initial bootstrap and scheduled submodule-update PR bodies satisfy the generated design-preflight gate.
 - Added promoted lesson `ingestion/lessons/2026-08-27-reference-first-component-composition.md` from the component-Lego design workflow and current primary-source catalog evidence.
 - Added `principles/002-reference-before-invention.md` and the mandatory `playbooks/reference-first-design-sop.md` so downstream agents inspect the active product and suitable component sources before choosing to keep, adapt, build, or reject.
 - Expanded design preflight and governance gates with reference discovery, provenance/license, dependency/security/performance, accessibility/motion, Site Soul, and integrated-product verification requirements.
