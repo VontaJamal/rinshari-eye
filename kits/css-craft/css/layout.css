@@ -1,0 +1,107 @@
+@layer rse.layout {
+  :where(.rse-page-grid) {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--rse-page-gutter), 1fr)
+      [content-start] minmax(0, var(--rse-content-max))
+      [content-end] minmax(var(--rse-page-gutter), 1fr)
+      [full-end];
+  }
+
+  :where(.rse-content) {
+    grid-column: content;
+  }
+
+  :where(.rse-full-bleed) {
+    grid-column: full;
+  }
+
+  :where(.rse-shell) {
+    inline-size: min(
+      calc(100% - var(--rse-page-gutter) - var(--rse-page-gutter)),
+      var(--rse-content-max)
+    );
+    margin-inline: auto;
+  }
+
+  :where(.rse-flow) > * {
+    margin-block: 0;
+  }
+
+  :where(.rse-flow) > * + * {
+    margin-block-start: var(--rse-flow-space);
+  }
+
+  :where(.rse-intrinsic-grid) {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, var(--rse-grid-min)), 1fr)
+    );
+    gap: var(--rse-layout-gap);
+  }
+
+  :where(.rse-query) {
+    container-type: inline-size;
+  }
+
+  :where(.rse-sticky-story) {
+    display: grid;
+    gap: var(--rse-layout-gap);
+  }
+
+  :where(.rse-sticky-story__visual) {
+    align-self: start;
+  }
+
+  :where(.rse-media-frame) {
+    overflow: clip;
+    aspect-ratio: var(--rse-media-ratio, 4 / 5);
+  }
+
+  :where(.rse-media-frame) > :where(img, video, picture) {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  :where(.rse-media-frame) > picture > :where(img, video) {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  :where(.rse-media-frame) > :where(img, video),
+  :where(.rse-media-frame) > picture > :where(img, video) {
+    object-fit: var(--rse-media-fit, cover);
+    object-position: var(--rse-media-position, center);
+  }
+
+  :where(.rse-snap-strip) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(
+      var(--rse-snap-item-max, 28rem),
+      calc(100% - var(--rse-snap-peek, 2rem))
+    );
+    gap: var(--rse-snap-gap, 1rem);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+  }
+
+  :where(.rse-snap-strip) > * {
+    scroll-snap-align: var(--rse-snap-align, center);
+  }
+
+  @container (min-width: 48rem) {
+    :where(.rse-sticky-story) {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.82fr);
+    }
+
+    :where(.rse-sticky-story__visual) {
+      position: sticky;
+      inset-block-start: var(--rse-sticky-top);
+    }
+  }
+}

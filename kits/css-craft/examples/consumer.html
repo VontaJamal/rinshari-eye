@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A dependency-free consumer fixture for the Rinshari Eye CSS craft package."
+    />
+    <title>Rinshari Eye CSS Craft Consumer</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #171713;
+        --paper: #f1eee7;
+        --signal: #c55a2d;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      button {
+        font: inherit;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--signal);
+        outline-offset: 4px;
+      }
+
+      .demo-hero {
+        min-block-size: 68svh;
+        padding: clamp(4rem, 10vw, 8rem) var(--rse-page-gutter);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .demo-hero__inner {
+        inline-size: min(100%, var(--rse-content-max));
+        margin-inline: auto;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-inline-size: 8ch;
+        font-family: Georgia, serif;
+        font-size: clamp(4rem, 13vw, 10rem);
+        font-weight: 500;
+        letter-spacing: -0.075em;
+        line-height: 0.82;
+      }
+
+      main {
+        padding-block: clamp(4rem, 9vw, 8rem);
+      }
+
+      .demo-visual {
+        display: grid;
+        place-items: center;
+        min-block-size: 24rem;
+        border-radius: 999px 999px 2rem 2rem;
+        background:
+          radial-gradient(circle at 58% 44%, #f7ad5a 0 10%, transparent 28%),
+          linear-gradient(145deg, #7c2c1e, #171713 68%);
+        color: white;
+        font-family: Georgia, serif;
+        font-size: clamp(3rem, 7vw, 7rem);
+      }
+
+      .demo-story {
+        --rse-flow-space: 1.5rem;
+        align-self: start;
+        padding-block: 2rem;
+      }
+
+      .demo-story h2 {
+        max-inline-size: 12ch;
+        font-family: Georgia, serif;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 500;
+        letter-spacing: -0.05em;
+        line-height: 0.98;
+      }
+
+      .demo-story p {
+        max-inline-size: 34rem;
+        line-height: 1.7;
+      }
+
+      .demo-grid {
+        margin-block-start: clamp(4rem, 8vw, 8rem);
+      }
+
+      .demo-grid article,
+      .demo-strip article {
+        min-block-size: 15rem;
+        padding: 1.5rem;
+        border: 1px solid rgb(23 23 19 / 0.24);
+      }
+
+      .demo-strip {
+        margin-block-start: 2rem;
+        padding-block-end: 1rem;
+      }
+
+      .demo-strip article {
+        display: grid;
+        align-content: end;
+        min-block-size: 20rem;
+        background: #ddd5c8;
+        font-family: Georgia, serif;
+        font-size: 2rem;
+      }
+
+      .demo-button {
+        --rse-action-rest-y: -0.25rem;
+        --rse-action-hover-y: -0.5rem;
+        --rse-action-active-y: -0.05rem;
+        margin-block-start: 3rem;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: #7d321e;
+        color: white;
+        cursor: pointer;
+      }
+
+      .demo-button .rse-stable-action__surface {
+        min-block-size: 3.25rem;
+        padding: 0.85rem 1.25rem;
+        border-radius: inherit;
+        background: var(--signal);
+      }
+
+      .demo-popover {
+        inline-size: min(calc(100% - 2rem), 32rem);
+        padding: 2.5rem;
+        border: 0;
+        border-radius: 1rem;
+        background: var(--paper);
+        color: var(--ink);
+        box-shadow: 0 2rem 6rem rgb(0 0 0 / 0.28);
+      }
+
+      .demo-popover h2 {
+        font-family: Georgia, serif;
+        font-size: 3rem;
+        font-weight: 500;
+      }
+
+      .demo-popover button {
+        min-block-size: 2.75rem;
+        margin-block-start: 1.5rem;
+      }
+    </style>
+  </head>
+  <body class="rse-page-grid">
+    <header class="demo-hero rse-full-bleed">
+      <div class="demo-hero__inner rse-flow">
+        <p class="rse-reveal" style="--rse-reveal-index: 0">Functional package proof</p>
+        <h1 class="rse-reveal" style="--rse-reveal-index: 1">Behavior, packaged.</h1>
+      </div>
+    </header>
+
+    <main class="rse-content rse-flow">
+      <div class="rse-query">
+        <section class="rse-sticky-story" aria-labelledby="story-title">
+          <div class="demo-visual rse-sticky-story__visual" aria-hidden="true">01</div>
+          <div class="demo-story rse-flow">
+            <p>Container-responsive sticky story</p>
+            <h2 id="story-title">Normal flow when narrow. Purposeful depth when wide.</h2>
+            <p>
+              The component responds to its own container instead of assuming where the page placed
+              it. Resize the viewport to see the relationship change without a device label.
+            </p>
+            <p>
+              Product typography, color, spacing, and content stay local. The package contributes
+              only the layout behavior.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <section class="demo-grid rse-intrinsic-grid" aria-label="Intrinsic grid proof">
+        <article>Items wrap when their minimum readable width no longer fits.</article>
+        <article>The parent does not need a list of device-specific columns.</article>
+        <article>Longer content expands the item instead of escaping a fixed height.</article>
+      </section>
+
+      <section aria-labelledby="strip-title">
+        <div class="rse-flow">
+          <h2 id="strip-title">Touch remains native.</h2>
+          <p>The strip scrolls without JavaScript and remains usable without snapping.</p>
+        </div>
+        <div class="demo-strip rse-snap-strip">
+          <article>First study</article>
+          <article>Second study</article>
+          <article>Third study</article>
+        </div>
+      </section>
+
+      <button class="demo-button rse-stable-action" popovertarget="package-proof">
+        <span class="rse-stable-action__surface">Open native popover</span>
+      </button>
+    </main>
+
+    <div class="demo-popover rse-popover" id="package-proof" popover aria-labelledby="proof-title">
+      <h2 id="proof-title">Arrival and exit are different actions.</h2>
+      <p>The browser owns focus and dismissal; CSS supplies restrained, preference-aware motion.</p>
+      <button popovertarget="package-proof" popovertargetaction="hide" autofocus>Close</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+@layer rse.interaction {
+  :where(.rse-stable-action__surface) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    translate: 0 var(--rse-action-rest-y, 0);
+    transition: translate var(--rse-motion-action-duration) var(--rse-ease-enter);
+  }
+
+  :where(.rse-stable-action:is(:hover, :focus-visible))
+    > :where(.rse-stable-action__surface) {
+    translate: 0 var(--rse-action-hover-y, -0.2rem);
+  }
+
+  :where(.rse-stable-action:active) > :where(.rse-stable-action__surface) {
+    translate: 0 var(--rse-action-active-y, 0.08rem);
+    transition-duration: 70ms;
+  }
+
+  :where(.rse-popover) {
+    opacity: 0;
+    translate: 0 var(--rse-popover-enter-distance, 1.5rem);
+    scale: var(--rse-popover-enter-scale, 0.97);
+    transition:
+      opacity var(--rse-motion-exit-duration) var(--rse-ease-exit),
+      translate var(--rse-motion-exit-duration) var(--rse-ease-exit),
+      scale var(--rse-motion-exit-duration) var(--rse-ease-exit),
+      display var(--rse-motion-exit-duration) allow-discrete,
+      overlay var(--rse-motion-exit-duration) allow-discrete;
+  }
+
+  :where(.rse-popover:popover-open) {
+    opacity: 1;
+    translate: 0;
+    scale: 1;
+    transition-duration: var(--rse-motion-enter-duration);
+    transition-timing-function: var(--rse-ease-enter);
+  }
+
+  @starting-style {
+    :where(.rse-popover:popover-open) {
+      opacity: 0;
+      translate: 0 var(--rse-popover-enter-distance, 1.5rem);
+      scale: var(--rse-popover-enter-scale, 0.97);
+    }
+  }
+
+  :where(.rse-popover)::backdrop {
+    background: var(--rse-popover-backdrop, rgb(0 0 0 / 0.62));
+    opacity: 0;
+    transition:
+      opacity var(--rse-motion-exit-duration) var(--rse-ease-exit),
+      display var(--rse-motion-exit-duration) allow-discrete,
+      overlay var(--rse-motion-exit-duration) allow-discrete;
+  }
+
+  :where(.rse-popover:popover-open)::backdrop {
+    opacity: 1;
+    transition-duration: var(--rse-motion-enter-duration);
+  }
+
+  @starting-style {
+    :where(.rse-popover:popover-open)::backdrop {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.rse-stable-action__surface) {
+      translate: none;
+      transition-duration: 1ms;
+    }
+
+    :where(.rse-stable-action:is(:hover, :focus-visible))
+      > :where(.rse-stable-action__surface),
+    :where(.rse-stable-action:active) > :where(.rse-stable-action__surface) {
+      translate: none;
+    }
+
+    :where(.rse-popover),
+    :where(.rse-popover)::backdrop {
+      translate: none;
+      scale: 1;
+      transition-duration: 1ms;
+    }
+  }
+}

@@ -7,6 +7,8 @@ All notable changes to `rinshari-eye` are tracked here.
 - Added `principles/003-behavior-before-decoration.md` to connect reference selection with resilient layout, intrinsic sizing, responsive behavior, component boundaries, typography/media, action-driven motion, and coherent polish.
 - Added `patterns/css-solution-techniques.md` as a practical atlas of construction moves distilled from solution-focused study.
 - Added the original, runnable `examples/lumen-craft-lab/` to prove full-bleed composition, intrinsic layout, sticky storytelling, responsive media, stable interaction targets, action-driven motion, reduced-motion parity, and visual polish in code.
+- Added the private, opt-in `@rinshari-eye/css-craft` local package so every submodule consumer can reuse the proven behavior recipes without inheriting Lumen styling or adding a registry dependency.
+- Added a dependency-free package consumer fixture and CI package-manifest validation covering the shipped CSS modules, example, documentation, and language exception.
 - Kept the new learning out of downstream PR-form and CI bureaucracy; the promoted principle points to working examples rather than adding another required evidence form.
 - Hardened downstream bootstrap output and added an end-to-end fixture so generated templates pass diff hygiene, documentation-only changes have a truthful engineering-baseline option, and both initial bootstrap and scheduled submodule-update PR bodies satisfy the generated design-preflight gate.
 - Added promoted lesson `ingestion/lessons/2026-08-27-reference-first-component-composition.md` from the component-Lego design workflow and current primary-source catalog evidence.

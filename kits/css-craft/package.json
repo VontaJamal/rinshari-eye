@@ -1,0 +1,25 @@
+{
+  "name": "@rinshari-eye/css-craft",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Opt-in CSS behavior recipes for resilient layout and action-driven motion.",
+  "license": "UNLICENSED",
+  "style": "./css/index.css",
+  "sideEffects": [
+    "./css/*.css"
+  ],
+  "exports": {
+    ".": "./css/index.css",
+    "./tokens.css": "./css/tokens.css",
+    "./layout.css": "./css/layout.css",
+    "./interaction.css": "./css/interaction.css",
+    "./motion.css": "./css/motion.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "css",
+    "examples",
+    "LANGUAGE-EXCEPTION.md",
+    "README.md"
+  ]
+}

@@ -34,6 +34,7 @@ This principle should increase what an agent can build, not the number of forms 
 
 - `patterns/css-solution-techniques.md` to understand recurring construction moves and failure modes;
 - `examples/lumen-craft-lab/` to inspect a complete original composition that combines those moves;
+- `kits/css-craft/` to consume the proven behavior recipes as an opt-in local package while keeping product typography, color, content, and art direction local;
 - new project-specific practice when a technique has not yet been demonstrated under the target product constraints.
 
 A technique is considered learned only when it can be implemented originally, adapted to different content and viewport pressure, operated by keyboard and touch, given a reduced-motion equivalent, and removed when it does not improve the product.
@@ -59,6 +60,7 @@ Motion is action-driven communication. Use it for orientation, comprehension, fe
 - `ingestion/lessons/2026-08-27-reference-first-component-composition.md`
 - `principles/002-reference-before-invention.md`
 - `patterns/css-solution-techniques.md`
+- `kits/css-craft/`
 - `examples/lumen-craft-lab/`
 - https://courses.joshwcomeau.com/css-for-js
 - https://courses.joshwcomeau.com/css-for-js/video-archive

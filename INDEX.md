@@ -9,12 +9,16 @@
 ## Patterns
 - `patterns/css-solution-techniques.md`: practical construction moves for full-bleed composition, intrinsic layout, sticky storytelling, media cropping, stable interaction targets, action-driven motion, depth, container responsiveness, and touch scrolling.
 
+## Kits
+- `kits/css-craft/`: opt-in local CSS package for resilient page grids, intrinsic layout, container-responsive sticky stories, deliberate media frames, native touch snapping, stable interaction targets, action-specific popovers, entrance reveals, and reduced-motion parity.
+
 ## Playbooks
 - `playbooks/reference-first-design-sop.md`: mandatory reference discovery, provenance, selection, integration, and product-level verification workflow for UI/UX changes.
 - `playbooks/seven-shadows-system-talk.md`: reusable narrative and contract script for introducing Seven Shadows doctrine downstream.
 
 ## Examples
 - `examples/lumen-craft-lab/`: runnable original landing-page lab that practices the promoted CSS solution techniques without copying course code or assets.
+- `kits/css-craft/examples/consumer.html`: dependency-free consumer fixture proving that the packaged behaviors work without the Lumen visual system.
 
 ## Decision Log
 - Add major decisions in `decision-log/` with date-based filenames.

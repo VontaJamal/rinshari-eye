@@ -25,6 +25,7 @@
   - The previously promoted reference-first lesson supplies the discovery and provenance layer that precedes this implementation-quality layer.
   - A solution-focused follow-up identified 59 workshop, exercise, or solution records across the curriculum, including 42 with official captions, and translated recurring construction moves into an original pattern atlas and runnable lab.
   - `examples/lumen-craft-lab/` demonstrates the promoted techniques in a new editorial composition without course code, copy, or assets.
+  - `kits/css-craft/` extracts the layout and interaction behavior from that practice into prefixed, zero-specificity, cascade-layered modules that downstream submodule consumers can adopt without inheriting the example's visual identity.
 - do:
   - Preserve semantic and reading order before choosing a visual layout model.
   - Choose Flow, Flexbox, Grid, or positioned layout from the relationship being expressed, and keep ownership of each layout responsibility clear.
@@ -42,6 +43,7 @@
 - candidate_principles:
   - `principles/003-behavior-before-decoration.md`
   - `patterns/css-solution-techniques.md`
+  - `kits/css-craft/`
 - a11y_notes:
   - Semantic order, visible focus, non-color cues, contrast, target size, zoom and reflow, media alternatives, input capability, and reduced-motion parity must be verified in the integrated product.
 - promotion_status: promoted
@@ -50,4 +52,4 @@
 - Source material was inspected on August 28, 2026 through owner-authorized authenticated access.
 - This card is a paraphrased synthesis. It contains no transcript blocks, lesson exports, or copied course assets.
 - Named tools and libraries are evidence and discovery options, not mandatory dependencies; provenance, license, support, and fit require current verification at adoption time.
-- Practical mastery is evidenced by the original Lumen craft lab, not by storing course solutions.
+- Practical mastery is evidenced by the original Lumen craft lab and the reusable CSS craft package, not by storing course solutions.
