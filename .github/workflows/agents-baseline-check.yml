@@ -75,7 +75,7 @@ jobs:
             }
           done
 
-      - name: Validate reference-first and CSS craft design contract
+      - name: Validate reference-first and CSS craft resources
         shell: bash
         run: |
           set -euo pipefail
@@ -89,7 +89,10 @@ jobs:
             principles/002-reference-before-invention.md \
             principles/003-behavior-before-decoration.md \
             playbooks/reference-first-design-sop.md \
-            playbooks/css-craft-review.md; do
+            patterns/css-solution-techniques.md \
+            examples/lumen-craft-lab/README.md \
+            examples/lumen-craft-lab/index.html \
+            examples/lumen-craft-lab/styles.css; do
             [[ -s "$required_file" ]] || {
               echo "Reference-first contract file is missing or empty: $required_file" >&2
               exit 1
@@ -98,10 +101,8 @@ jobs:
 
           grep -Fq 'playbooks/reference-first-design-sop.md' AGENTS.md
           grep -Fq '### Reference and Reuse Decision' templates/design-preflight.md
-          grep -Fq '### CSS Craft and Behavior Decision' templates/design-preflight.md
           grep -Fq 'The integrated product, not the source demo' governance/checklist.md
           grep -Fq '## Reference and reuse decision' ops/bootstrap-downstream.sh
-          grep -Fq '## CSS craft and behavior summary' ops/bootstrap-downstream.sh
           grep -Fq 'Candidate decisions must include keep, adapt, build, or reject' ops/bootstrap-downstream.sh
           grep -Fq 'No implementation-language change' ops/bootstrap-downstream.sh
           grep -Fq -- '--body "$BOOTSTRAP_PR_BODY"' ops/bootstrap-downstream.sh

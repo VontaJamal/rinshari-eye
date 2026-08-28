@@ -28,7 +28,6 @@ check_body() {
     "Site Soul alignment"
     "Animation audit summary"
     "Reference and reuse decision"
-    "CSS craft and behavior summary"
     "Whimsy & motion quality bar"
     "Accessibility parity for motion"
     "Onboarding impact score (0-5)"
@@ -55,11 +54,6 @@ check_body() {
   printf '%s\n' "$body" | grep -Eq '^- Sources inspected: .+'
   printf '%s\n' "$body" | grep -Eqi '^- Candidate decisions:.*(keep|adapt|build|reject)'
   printf '%s\n' "$body" | grep -Eq '^- Provenance and risk gates: .+'
-  printf '%s\n' "$body" | grep -Eq '^- Major regions and user jobs: .+'
-  printf '%s\n' "$body" | grep -Eq '^- Content/focus order and layout ownership: .+'
-  printf '%s\n' "$body" | grep -Eq '^- Intrinsic and responsive constraints: .+'
-  printf '%s\n' "$body" | grep -Eq '^- Typography and media behavior: .+'
-  printf '%s\n' "$body" | grep -Eq '^- Integrated proof matrix: .+'
   printf '%s\n' "$body" | grep -Eq '^- [0-5]$'
   printf '%s\n' "$body" | grep -Eq '^- (none|copy-only|mini-tour)$'
   printf '%s\n' "$body" | grep -Eq '^- \[[xX]\] (No AI used|AI used)$'

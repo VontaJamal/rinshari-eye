@@ -5,7 +5,9 @@ All notable changes to `rinshari-eye` are tracked here.
 ## [Unreleased]
 - Added promoted lesson `ingestion/lessons/2026-08-28-css-craft-and-motion.md` from complete authenticated inspection of the CSS for JavaScript Developers curriculum, video archive, and Treasure Trove, cross-referenced with the existing reference-first component lesson.
 - Added `principles/003-behavior-before-decoration.md` to connect reference selection with resilient layout, intrinsic sizing, responsive behavior, component boundaries, typography/media, action-driven motion, and coherent polish.
-- Added mandatory post-selection `playbooks/css-craft-review.md` plus preflight, governance, downstream PR evidence, CI, and bootstrap regression gates for behavior maps, layout ownership, content constraints, input capabilities, reduced-motion parity, and integrated proof.
+- Added `patterns/css-solution-techniques.md` as a practical atlas of construction moves distilled from solution-focused study.
+- Added the original, runnable `examples/lumen-craft-lab/` to prove full-bleed composition, intrinsic layout, sticky storytelling, responsive media, stable interaction targets, action-driven motion, reduced-motion parity, and visual polish in code.
+- Kept the new learning out of downstream PR-form and CI bureaucracy; the promoted principle points to working examples rather than adding another required evidence form.
 - Hardened downstream bootstrap output and added an end-to-end fixture so generated templates pass diff hygiene, documentation-only changes have a truthful engineering-baseline option, and both initial bootstrap and scheduled submodule-update PR bodies satisfy the generated design-preflight gate.
 - Added promoted lesson `ingestion/lessons/2026-08-27-reference-first-component-composition.md` from the component-Lego design workflow and current primary-source catalog evidence.
 - Added `principles/002-reference-before-invention.md` and the mandatory `playbooks/reference-first-design-sop.md` so downstream agents inspect the active product and suitable component sources before choosing to keep, adapt, build, or reject.

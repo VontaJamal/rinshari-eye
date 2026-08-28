@@ -9,21 +9,19 @@ Before UI/UX work in downstream repos, complete all of the following:
 5. Inventory the active local component foundation, design tokens, required states, and tests; identify reusable implementation before proposing something new.
 6. State the specific user-facing or product gap and the assumption that would make the proposed change unnecessary.
 7. Read relevant docs in `design/rinshari-eye/principles/`, including `002-reference-before-invention.md` and `003-behavior-before-decoration.md` for material interface work.
-8. Read `design/rinshari-eye/playbooks/reference-first-design-sop.md`, `design/rinshari-eye/playbooks/css-craft-review.md`, and local `docs/site-soul-brief.md`.
+8. Read `design/rinshari-eye/playbooks/reference-first-design-sop.md` and local `docs/site-soul-brief.md`.
 9. Inspect suitable official component catalogs, registries, agent-readable indexes, source repositories, and live previews. Do not install during discovery.
 10. Record keep/adapt/build/reject decisions. For every selected external module, record canonical source, accessed version or commit, license and attribution, dependencies, security and performance cost, accessibility and motion risk, and Site Soul adaptations.
-11. Record the semantic/content order, layout model, intrinsic constraints, responsive triggers, typography/media behavior, motion action, and reduced-motion equivalent for each major changed region.
-12. Declare AI intent: where AI is used, why AI is needed, and why non-AI execution is insufficient; if AI is not used, state that explicitly.
-13. Declare AI data boundaries: no raw secrets, credentials, or sensitive user data to external AI systems, with redaction/abstraction method when AI is used.
-14. Define AI reliability controls: validation method, confidence limits, and fallback/manual behavior.
-15. State intended visual/UX effect and how it supports user goals and product/value outcomes.
-16. Identify one accessibility risk and mitigation.
-17. In PR/task output, include:
+11. Declare AI intent: where AI is used, why AI is needed, and why non-AI execution is insufficient; if AI is not used, state that explicitly.
+12. Declare AI data boundaries: no raw secrets, credentials, or sensitive user data to external AI systems, with redaction/abstraction method when AI is used.
+13. Define AI reliability controls: validation method, confidence limits, and fallback/manual behavior.
+14. State intended visual/UX effect and how it supports user goals and product/value outcomes.
+15. Identify one accessibility risk and mitigation.
+16. In PR/task output, include:
    - Applied principles
    - Site Soul alignment
    - Animation audit summary (files checked + keep/change decisions)
    - Reference and reuse decision (local foundation + sources inspected + keep/adapt/build/reject + provenance and risk gates)
-   - CSS craft and behavior summary (content order + layout model + intrinsic/responsive constraints + type/media + proof matrix)
    - Motion intent map (effect -> user goal -> reduced-motion fallback -> expected value outcome)
    - AI intent map (task -> value hypothesis -> data class -> validation -> fallback)
 
@@ -52,16 +50,6 @@ Before UI/UX work in downstream repos, complete all of the following:
 - Canonical source, accessed version or commit, license, and attribution:
 - Dependency, security, performance, and maintenance cost:
 - Accessibility, motion, and Site Soul adaptations required:
-
-### CSS Craft and Behavior Decision
-- Major regions and user jobs:
-- Semantic, reading, and focus order:
-- Layout model and ownership per region:
-- Intrinsic sizing and overflow constraints:
-- Responsive content dead zones, containers, and input capabilities:
-- Typography, font-loading, image, icon, and media behavior:
-- Action-specific motion and performance choices:
-- Narrow/standard/wide, zoom/reflow, input, state, and reduced-motion proof:
 
 ### Onboarding Impact Scoring
 - Onboarding impact score (0-5):

@@ -14,6 +14,7 @@
   - Component boundaries should own one styling source, expose a restrained set of variants, and use composition for larger structural differences.
   - Motion should explain an action or state change, use action-appropriate timing, preserve stable interaction targets, favor composited properties, and provide a meaningful reduced-motion equivalent.
   - Polish is a system of consistent lighting, color, typography, imagery, focus, touch, and scroll behavior rather than a collection of unrelated effects.
+  - Durable learning requires original implementation practice: a technique is not promoted solely because it can be summarized from a solution video.
 - ui_effect_goal: Help teams turn strong references into cohesive interfaces that remain clear, responsive, accessible, performant, and visually convincing in the real product.
 - evidence_items:
   - The authenticated curriculum was inspected across all 219 lessons in 12 modules; available official captions were paired with lesson text and interactive examples, while text and page context supplied evidence where captions were unavailable.
@@ -22,6 +23,8 @@
   - Course examples repeatedly show that Flow, Flexbox, Grid, positioned layout, intrinsic sizing, and stacking each solve different relationships; choosing the wrong model creates brittle offsets and overflow workarounds.
   - Motion lessons distinguish state from action, demonstrate sequencing for comprehension, favor transform and opacity for frequent animation, and require reduced-motion handling.
   - The previously promoted reference-first lesson supplies the discovery and provenance layer that precedes this implementation-quality layer.
+  - A solution-focused follow-up identified 59 workshop, exercise, or solution records across the curriculum, including 42 with official captions, and translated recurring construction moves into an original pattern atlas and runnable lab.
+  - `examples/lumen-craft-lab/` demonstrates the promoted techniques in a new editorial composition without course code, copy, or assets.
 - do:
   - Preserve semantic and reading order before choosing a visual layout model.
   - Choose Flow, Flexbox, Grid, or positioned layout from the relationship being expressed, and keep ownership of each layout responsibility clear.
@@ -29,6 +32,7 @@
   - Base responsive changes on content pressure and capabilities such as hover, pointer precision, container size, and motion preference.
   - Define motion by user action, purpose, entrance and exit behavior, performance cost, and reduced-motion parity.
   - Apply shadows, gradients, filters, radii, and optical adjustments through a coherent local visual system.
+  - Practice promoted techniques in original runnable compositions and verify that they adapt across content, viewport, input, and motion-preference changes.
 - dont:
   - Use pixel offsets, oversized `z-index` values, hidden overflow, or fixed heights to conceal a misunderstood layout problem.
   - Reorder content visually in a way that disagrees with reading or focus order.
@@ -37,6 +41,7 @@
   - Treat gradients, glass, shadows, 3D transforms, or animated clipping as automatic signals of quality.
 - candidate_principles:
   - `principles/003-behavior-before-decoration.md`
+  - `patterns/css-solution-techniques.md`
 - a11y_notes:
   - Semantic order, visible focus, non-color cues, contrast, target size, zoom and reflow, media alternatives, input capability, and reduced-motion parity must be verified in the integrated product.
 - promotion_status: promoted
@@ -45,3 +50,4 @@
 - Source material was inspected on August 28, 2026 through owner-authorized authenticated access.
 - This card is a paraphrased synthesis. It contains no transcript blocks, lesson exports, or copied course assets.
 - Named tools and libraries are evidence and discovery options, not mandatory dependencies; provenance, license, support, and fit require current verification at adoption time.
+- Practical mastery is evidenced by the original Lumen craft lab, not by storing course solutions.

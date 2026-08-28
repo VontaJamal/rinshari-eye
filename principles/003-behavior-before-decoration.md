@@ -28,6 +28,16 @@ Apply this order to every material interface:
 ## UX Effect
 Create interfaces that feel calm, intentional, tactile, and premium because their hierarchy and interactions remain convincing—not because more effects were added. The expected result is stronger comprehension, confidence, task completion, and perceived craft across devices and input modes.
 
+## Practical Capability
+
+This principle should increase what an agent can build, not the number of forms it completes. Use:
+
+- `patterns/css-solution-techniques.md` to understand recurring construction moves and failure modes;
+- `examples/lumen-craft-lab/` to inspect a complete original composition that combines those moves;
+- new project-specific practice when a technique has not yet been demonstrated under the target product constraints.
+
+A technique is considered learned only when it can be implemented originally, adapted to different content and viewport pressure, operated by keyboard and touch, given a reduced-motion equivalent, and removed when it does not improve the product.
+
 ## Accessibility Implication
 The DOM remains the source of truth for meaning, reading, and focus order. Verify visible focus, keyboard operation, semantic controls, contrast, non-color cues, touch targets, text zoom, reflow, image alternatives, and input-capability fallbacks. Every motion pattern needs a non-motion route that preserves the same information and task outcome.
 
@@ -48,6 +58,8 @@ Motion is action-driven communication. Use it for orientation, comprehension, fe
 - `ingestion/lessons/2026-08-28-css-craft-and-motion.md`
 - `ingestion/lessons/2026-08-27-reference-first-component-composition.md`
 - `principles/002-reference-before-invention.md`
+- `patterns/css-solution-techniques.md`
+- `examples/lumen-craft-lab/`
 - https://courses.joshwcomeau.com/css-for-js
 - https://courses.joshwcomeau.com/css-for-js/video-archive
 - https://courses.joshwcomeau.com/css-for-js/treasure-trove
