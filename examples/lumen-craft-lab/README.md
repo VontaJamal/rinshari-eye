@@ -38,6 +38,11 @@ Serve this directory with any static server and open `index.html`. For example:
 
     python3 -m http.server 4173 --directory examples/lumen-craft-lab
 
+## Review Proof
+
+- `proof/lumen-craft-demo.webm`: short desktop walkthrough of the hero entrance, sticky composition, stable button motion, native popover, studies, and final action.
+- `proof/lumen-mobile.png`: narrow-screen proof at 390 by 844 pixels after the entrance motion settles.
+
 ## Provenance
 
 - Course-derived ideas are paraphrased in `../../ingestion/lessons/2026-08-28-css-craft-and-motion.md`.
