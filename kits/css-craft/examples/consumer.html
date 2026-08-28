@@ -105,6 +105,27 @@
         margin-block-start: clamp(4rem, 8vw, 8rem);
       }
 
+      .demo-narrow {
+        inline-size: min(100%, 30rem);
+        margin-block-start: clamp(4rem, 8vw, 8rem);
+        padding: 1.25rem;
+        border: 1px solid rgb(23 23 19 / 0.24);
+      }
+
+      .demo-narrow .demo-visual {
+        min-block-size: 12rem;
+        border-radius: 8rem 8rem 1rem 1rem;
+        font-size: 3rem;
+      }
+
+      .demo-narrow .demo-story {
+        padding-block-end: 0;
+      }
+
+      .demo-narrow .demo-story h2 {
+        font-size: 2.25rem;
+      }
+
       .demo-grid article,
       .demo-strip article {
         min-block-size: 15rem;
@@ -194,6 +215,17 @@
           </div>
         </section>
       </div>
+
+      <section class="demo-narrow rse-query" aria-labelledby="narrow-title">
+        <div class="rse-sticky-story">
+          <div class="demo-visual rse-sticky-story__visual" aria-hidden="true">390</div>
+          <div class="demo-story rse-flow">
+            <p>Fixed narrow-container proof</p>
+            <h2 id="narrow-title">The same recipe stays in normal flow.</h2>
+            <p>The page is wide; this component is not. Its own available space controls it.</p>
+          </div>
+        </div>
+      </section>
 
       <section class="demo-grid rse-intrinsic-grid" aria-label="Intrinsic grid proof">
         <article>Items wrap when their minimum readable width no longer fits.</article>
