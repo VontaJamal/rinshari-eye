@@ -22,6 +22,7 @@ It exists to capture reusable design principles, not one-size-fits-all templates
 - Use `templates/lesson-card.md` for new lesson ingestion.
 - Use `governance/checklist.md` before promoting or updating principles.
 - Use `playbooks/reference-first-design-sop.md` before material UI/UX implementation: inspect the local foundation, search suitable working references, and record keep/adapt/build decisions before importing or inventing components.
+- Use `playbooks/css-craft-review.md` after reference selection to validate layout models, responsive behavior, typography/media, action-driven motion, coherent polish, and integrated-product proof.
 
 ## Repository Structure
 - `principles/`: stable principle docs used across products.
@@ -38,6 +39,7 @@ It exists to capture reusable design principles, not one-size-fits-all templates
 - `templates/site-soul-brief.md`: per-project identity brief template.
 - `governance/checklist.md`: required quality gate for principle updates.
 - `playbooks/reference-first-design-sop.md`: required discovery and component-selection workflow for material downstream UI/UX work.
+- `playbooks/css-craft-review.md`: required behavior-and-craft review for material downstream UI/UX work after the reference decision.
 
 ## Content Policy
 This is a paraphrase-only repo for course-derived material.
@@ -50,9 +52,10 @@ This is a paraphrase-only repo for course-derived material.
 - Agents in downstream repos must read:
   - `design/rinshari-eye/templates/design-preflight.md`
   - `design/rinshari-eye/playbooks/reference-first-design-sop.md`
+  - `design/rinshari-eye/playbooks/css-craft-review.md`
   - relevant `design/rinshari-eye/principles/*`
   - local `docs/site-soul-brief.md`
-- Downstream UI/UX work must report the active local foundation, references inspected, keep/adapt/build/reject decisions, source provenance and license, and integrated accessibility/motion/performance verification.
+- Downstream UI/UX work must report the active local foundation, references inspected, keep/adapt/build/reject decisions, source provenance and license, CSS craft and behavior decisions, and integrated accessibility/motion/performance verification.
 - New guidance reaches downstream repos when the submodule pointer is bumped and merged.
 
 ## Agents Baseline Enforcement

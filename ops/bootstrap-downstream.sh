@@ -150,7 +150,7 @@ For any UI/UX change, agents must do all of the following before implementation:
 1. Read `design/rinshari-eye/templates/design-preflight.md`.
 2. Audit repository animation/motion implementation first and note keep/change decisions.
 3. Audit the active local component and token foundation and define the user-facing gap before external discovery.
-4. Read relevant files in `design/rinshari-eye/principles/` and follow `design/rinshari-eye/playbooks/reference-first-design-sop.md`.
+4. Read relevant files in `design/rinshari-eye/principles/`, follow `design/rinshari-eye/playbooks/reference-first-design-sop.md`, then run `design/rinshari-eye/playbooks/css-craft-review.md` on the selected direction.
 5. Read local `docs/site-soul-brief.md`.
 6. Inspect suitable official component catalogs and source indexes, then record keep/adapt/build/reject decisions before importing or inventing components.
 7. Verify provenance, license, attribution, dependencies, security, accessibility, motion, performance, and Site Soul fit for every selected external module.
@@ -159,6 +159,7 @@ For any UI/UX change, agents must do all of the following before implementation:
    - Site Soul alignment
    - Animation audit summary
    - Reference and reuse decision
+   - CSS craft and behavior summary
    - AI intent map
 <!-- rinshari-eye:END -->
 AGENTS
@@ -185,6 +186,13 @@ AGENTS
 - Sources inspected:
 - Candidate decisions:
 - Provenance and risk gates:
+
+## CSS craft and behavior summary
+- Major regions and user jobs:
+- Content/focus order and layout ownership:
+- Intrinsic and responsive constraints:
+- Typography and media behavior:
+- Integrated proof matrix:
 
 ## Whimsy & motion quality bar
 -
@@ -248,6 +256,13 @@ PRTMP
 - Sources inspected: Canonical `VontaJamal/rinshari-eye` source and the target repository integration points.
 - Candidate decisions: keep existing product UI and adapt only governance, provenance, and review surfaces.
 - Provenance and risk gates: Exact upstream commit recorded by the gitlink; no runtime dependency or product behavior change.
+
+## CSS craft and behavior summary
+- Major regions and user jobs: Not applicable; no rendered product region changes.
+- Content/focus order and layout ownership: Preserved unchanged.
+- Intrinsic and responsive constraints: Preserved unchanged.
+- Typography and media behavior: Preserved unchanged.
+- Integrated proof matrix: Generated governance files and the pinned gitlink are verified by the bootstrap regression test.
 
 ## Whimsy & motion quality bar
 - Not applicable; no rendered UI or motion changed.
@@ -326,6 +341,7 @@ jobs:
           printf '%s\n' "$body" | grep -q '^## Site Soul alignment' || fail "Missing section: Site Soul alignment"
           printf '%s\n' "$body" | grep -q '^## Animation audit summary' || fail "Missing section: Animation audit summary"
           printf '%s\n' "$body" | grep -q '^## Reference and reuse decision' || fail "Missing section: Reference and reuse decision"
+          printf '%s\n' "$body" | grep -q '^## CSS craft and behavior summary' || fail "Missing section: CSS craft and behavior summary"
           printf '%s\n' "$body" | grep -q '^## Whimsy & motion quality bar' || fail "Missing section: Whimsy & motion quality bar"
           printf '%s\n' "$body" | grep -q '^## Accessibility parity for motion' || fail "Missing section: Accessibility parity for motion"
           printf '%s\n' "$body" | grep -q '^## Onboarding impact score (0-5)' || fail "Missing section: Onboarding impact score (0-5)"
@@ -344,6 +360,7 @@ jobs:
           soul="$(printf '%s\n' "$body" | awk '/^## Site Soul alignment/{flag=1;next}/^## /{flag=0}flag')"
           animation="$(printf '%s\n' "$body" | awk '/^## Animation audit summary/{flag=1;next}/^## /{flag=0}flag')"
           reference="$(printf '%s\n' "$body" | awk '/^## Reference and reuse decision/{flag=1;next}/^## /{flag=0}flag')"
+          css_craft="$(printf '%s\n' "$body" | awk '/^## CSS craft and behavior summary/{flag=1;next}/^## /{flag=0}flag')"
           whimsy="$(printf '%s\n' "$body" | awk '/^## Whimsy & motion quality bar/{flag=1;next}/^## /{flag=0}flag')"
           motion_a11y="$(printf '%s\n' "$body" | awk '/^## Accessibility parity for motion/{flag=1;next}/^## /{flag=0}flag')"
           onboarding_score="$(printf '%s\n' "$body" | awk '/^## Onboarding impact score \(0-5\)/{flag=1;next}/^## /{flag=0}flag')"
@@ -360,6 +377,7 @@ jobs:
           soul_clean="$(printf '%s' "$soul" | sed 's/[[:space:]-]//g')"
           animation_clean="$(printf '%s' "$animation" | sed 's/[[:space:]-]//g')"
           reference_clean="$(printf '%s' "$reference" | sed 's/[[:space:]-]//g')"
+          css_craft_clean="$(printf '%s' "$css_craft" | sed 's/[[:space:]-]//g')"
           whimsy_clean="$(printf '%s' "$whimsy" | sed 's/[[:space:]-]//g')"
           motion_a11y_clean="$(printf '%s' "$motion_a11y" | sed 's/[[:space:]-]//g')"
           onboarding_score_clean="$(printf '%s' "$onboarding_score" | sed 's/[[:space:]-]//g')"
@@ -388,6 +406,17 @@ jobs:
           [[ -n "$reference_decisions_value" ]] || fail "Reference and reuse decision must identify candidate decisions"
           printf '%s\n' "$reference_decisions_value" | grep -Eqi '(^|[^[:alpha:]])(keep|adapt|build|reject)([^[:alpha:]]|$)' || fail "Candidate decisions must include keep, adapt, build, or reject"
           [[ -n "$reference_risks_value" ]] || fail "Reference and reuse decision must document provenance and risk gates"
+          [[ -n "$css_craft_clean" ]] || fail "CSS craft and behavior summary section cannot be empty"
+          css_regions_value="$(printf '%s\n' "$css_craft" | awk 'tolower($0) ~ /^- major regions and user jobs:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          css_layout_value="$(printf '%s\n' "$css_craft" | awk 'tolower($0) ~ /^- content\/focus order and layout ownership:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          css_responsive_value="$(printf '%s\n' "$css_craft" | awk 'tolower($0) ~ /^- intrinsic and responsive constraints:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          css_media_value="$(printf '%s\n' "$css_craft" | awk 'tolower($0) ~ /^- typography and media behavior:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          css_proof_value="$(printf '%s\n' "$css_craft" | awk 'tolower($0) ~ /^- integrated proof matrix:/ {line=$0; sub(/^[^:]*:[[:space:]]*/, "", line); print line; exit}')"
+          [[ -n "$css_regions_value" ]] || fail "CSS craft summary must identify major regions and user jobs"
+          [[ -n "$css_layout_value" ]] || fail "CSS craft summary must identify content/focus order and layout ownership"
+          [[ -n "$css_responsive_value" ]] || fail "CSS craft summary must identify intrinsic and responsive constraints"
+          [[ -n "$css_media_value" ]] || fail "CSS craft summary must identify typography and media behavior"
+          [[ -n "$css_proof_value" ]] || fail "CSS craft summary must identify the integrated proof matrix"
           [[ -n "$whimsy_clean" ]] || fail "Whimsy & motion quality bar section cannot be empty"
           [[ -n "$motion_a11y_clean" ]] || fail "Accessibility parity for motion section cannot be empty"
           [[ -n "$onboarding_score_clean" ]] || fail "Onboarding impact score (0-5) section cannot be empty"
@@ -475,6 +504,13 @@ jobs:
             - Sources inspected: Canonical `VontaJamal/rinshari-eye` `origin/main`.
             - Candidate decisions: keep the local design foundation and adapt only the pinned canonical commit.
             - Provenance and risk gates: Exact upstream commit recorded by the gitlink; no runtime dependency or product behavior change.
+
+            ## CSS craft and behavior summary
+            - Major regions and user jobs: Not applicable; no rendered product region changes.
+            - Content/focus order and layout ownership: Preserved unchanged.
+            - Intrinsic and responsive constraints: Preserved unchanged.
+            - Typography and media behavior: Preserved unchanged.
+            - Integrated proof matrix: Git records the exact upstream commit and the downstream preflight workflow validates this evidence contract.
 
             ## Whimsy & motion quality bar
             - Not applicable; no rendered UI or motion changed.

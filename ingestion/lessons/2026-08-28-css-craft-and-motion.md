@@ -1,0 +1,47 @@
+# Lesson Card: CSS Craft and Motion
+
+- lesson_title: CSS Craft and Motion
+- source_type: mixed
+- source_refs:
+  - https://courses.joshwcomeau.com/css-for-js
+  - https://courses.joshwcomeau.com/css-for-js/video-archive
+  - https://courses.joshwcomeau.com/css-for-js/treasure-trove
+  - `ingestion/lessons/2026-08-27-reference-first-component-composition.md`
+- core_claims:
+  - Visual quality starts with the correct mental model for layout, sizing, stacking, content flow, and browser behavior; decoration cannot repair a structurally incorrect interface.
+  - A reference-led design process and sound CSS craft are complementary. References establish direction and reusable candidates, while implementation decisions make the integrated product resilient and native to its Site Soul.
+  - Responsive behavior should follow content, container, input, and user-preference constraints rather than a small list of fashionable device widths.
+  - Component boundaries should own one styling source, expose a restrained set of variants, and use composition for larger structural differences.
+  - Motion should explain an action or state change, use action-appropriate timing, preserve stable interaction targets, favor composited properties, and provide a meaningful reduced-motion equivalent.
+  - Polish is a system of consistent lighting, color, typography, imagery, focus, touch, and scroll behavior rather than a collection of unrelated effects.
+- ui_effect_goal: Help teams turn strong references into cohesive interfaces that remain clear, responsive, accessible, performant, and visually convincing in the real product.
+- evidence_items:
+  - The authenticated curriculum was inspected across all 219 lessons in 12 modules; available official captions were paired with lesson text and interactive examples, while text and page context supplied evidence where captions were unavailable.
+  - All 15 video-archive entries were inspected for problem-solving examples involving alignment, sticky positioning, stacking, component responsibility, grid, and animation.
+  - All 13 Treasure Trove entries were inspected for resource-selection guidance covering color, gradients, headless components, motion, inspiration, illustration, icons, photography, and asset generation.
+  - Course examples repeatedly show that Flow, Flexbox, Grid, positioned layout, intrinsic sizing, and stacking each solve different relationships; choosing the wrong model creates brittle offsets and overflow workarounds.
+  - Motion lessons distinguish state from action, demonstrate sequencing for comprehension, favor transform and opacity for frequent animation, and require reduced-motion handling.
+  - The previously promoted reference-first lesson supplies the discovery and provenance layer that precedes this implementation-quality layer.
+- do:
+  - Preserve semantic and reading order before choosing a visual layout model.
+  - Choose Flow, Flexbox, Grid, or positioned layout from the relationship being expressed, and keep ownership of each layout responsibility clear.
+  - Prefer intrinsic and constrained sizing over fixed content heights; test overflow, zoom, long copy, and narrow containers.
+  - Base responsive changes on content pressure and capabilities such as hover, pointer precision, container size, and motion preference.
+  - Define motion by user action, purpose, entrance and exit behavior, performance cost, and reduced-motion parity.
+  - Apply shadows, gradients, filters, radii, and optical adjustments through a coherent local visual system.
+- dont:
+  - Use pixel offsets, oversized `z-index` values, hidden overflow, or fixed heights to conceal a misunderstood layout problem.
+  - Reorder content visually in a way that disagrees with reading or focus order.
+  - Import a component library's visual language and assume it creates product cohesion.
+  - Transition every property, move the element that owns the hover target, or use persistent motion without a user outcome.
+  - Treat gradients, glass, shadows, 3D transforms, or animated clipping as automatic signals of quality.
+- candidate_principles:
+  - `principles/003-behavior-before-decoration.md`
+- a11y_notes:
+  - Semantic order, visible focus, non-color cues, contrast, target size, zoom and reflow, media alternatives, input capability, and reduced-motion parity must be verified in the integrated product.
+- promotion_status: promoted
+
+## Notes
+- Source material was inspected on August 28, 2026 through owner-authorized authenticated access.
+- This card is a paraphrased synthesis. It contains no transcript blocks, lesson exports, or copied course assets.
+- Named tools and libraries are evidence and discovery options, not mandatory dependencies; provenance, license, support, and fit require current verification at adoption time.
