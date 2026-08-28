@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An original, dependency-free landing-page lab for practicing resilient CSS composition and motion."
+    />
+    <meta name="theme-color" content="#0b0b0a" />
+    <title>Lumen — CSS Craft Lab</title>
+    <link rel="preload" as="image" href="./assets/lumen-hero.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Lumen home">Lumen</a>
+
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a class="flip-link" href="#material">
+          <span>Material</span>
+          <span aria-hidden="true">Material</span>
+        </a>
+        <a class="flip-link" href="#method">
+          <span>Method</span>
+          <span aria-hidden="true">Method</span>
+        </a>
+        <a class="flip-link" href="#visit">
+          <span>Visit</span>
+          <span aria-hidden="true">Visit</span>
+        </a>
+      </nav>
+
+      <button class="push-button push-button--small" popovertarget="viewing-panel">
+        <span class="push-button__face">Request a viewing</span>
+      </button>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <img
+          class="hero__image"
+          src="./assets/lumen-hero.png"
+          width="1536"
+          height="1024"
+          alt="An asymmetric amber glass lamp glowing on a black stone plinth."
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero__veil" aria-hidden="true"></div>
+
+        <div class="hero__content">
+          <p class="eyebrow reveal" style="--step: 0">Handblown studies · No. 04</p>
+          <h1 class="hero__title reveal" id="hero-title" style="--step: 1">Lumen</h1>
+          <p class="hero__promise reveal" style="--step: 2">Light, shaped slowly.</p>
+          <p class="hero__lede reveal" style="--step: 3">
+            Singular glass objects formed by heat, gravity, and the maker’s hand.
+          </p>
+          <a class="text-link reveal" href="#material" style="--step: 4">
+            Enter the studio
+            <span aria-hidden="true">↘</span>
+          </a>
+        </div>
+
+        <p class="hero__edition" aria-hidden="true">
+          <span>Edition</span>
+          <strong>04/12</strong>
+        </p>
+      </section>
+
+      <section class="material" id="material" aria-labelledby="material-title">
+        <div class="material__visual">
+          <div class="material__frame">
+            <img
+              src="./assets/lumen-hero.png"
+              width="1536"
+              height="1024"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="material__temperature" aria-hidden="true">1280°C</span>
+          </div>
+        </div>
+
+        <div class="material__story">
+          <p class="eyebrow">01 / Material</p>
+          <h2 id="material-title">The imperfection is the signature.</h2>
+          <p class="material__intro">
+            Each form begins as a molten gather. Nothing is stamped, mirrored, or corrected into
+            sameness.
+          </p>
+
+          <div class="story-beat">
+            <span>Heat</span>
+            <p>The glass carries evidence of the furnace: folds, bubbles, and softened edges.</p>
+          </div>
+          <div class="story-beat">
+            <span>Gravity</span>
+            <p>The final silhouette is discovered while the material is still moving.</p>
+          </div>
+          <div class="story-beat">
+            <span>Light</span>
+            <p>Warmth gathers in thick areas and slips through the thinner walls.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="method" id="method" aria-labelledby="method-title">
+        <header class="section-heading">
+          <p class="eyebrow">02 / Method</p>
+          <h2 id="method-title">Three decisions. One continuous gesture.</h2>
+        </header>
+
+        <div class="method__sequence">
+          <article>
+            <p class="method__number">01</p>
+            <h3>Gather</h3>
+            <p>Begin with enough material to hold depth without losing translucency.</p>
+          </article>
+          <article>
+            <p class="method__number">02</p>
+            <h3>Turn</h3>
+            <p>Rotate slowly so the shape can lean without collapsing into symmetry.</p>
+          </article>
+          <article>
+            <p class="method__number">03</p>
+            <h3>Release</h3>
+            <p>Stop before refinement erases the character created by the process.</p>
+          </article>
+        </div>
+
+        <div class="motion-study" aria-labelledby="motion-title">
+          <div>
+            <p class="eyebrow">Interaction study</p>
+            <h3 id="motion-title">The control stays still. The surface responds.</h3>
+          </div>
+          <button class="push-button" popovertarget="viewing-panel">
+            <span class="push-button__face">
+              Hold the light
+              <span aria-hidden="true">→</span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section class="studies" aria-labelledby="studies-title">
+        <header class="section-heading section-heading--light">
+          <p class="eyebrow">03 / Studies</p>
+          <h2 id="studies-title">A family, never a duplicate.</h2>
+        </header>
+
+        <div class="study-strip" role="list" aria-label="Material studies">
+          <article class="study study--amber" role="listitem">
+            <span>Study A</span>
+            <strong>Fold</strong>
+            <p>Dense at the base. Open at the crown.</p>
+          </article>
+          <article class="study study--smoke" role="listitem">
+            <span>Study B</span>
+            <strong>Drift</strong>
+            <p>Smoke glass with a single clear seam.</p>
+          </article>
+          <article class="study study--chalk" role="listitem">
+            <span>Study C</span>
+            <strong>Quiet</strong>
+            <p>Opal glass that turns the source into atmosphere.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="visit" id="visit" aria-labelledby="visit-title">
+        <div class="visit__inner">
+          <p class="eyebrow">04 / Private viewing</p>
+          <h2 id="visit-title">See how the light changes the room.</h2>
+          <p>Studio visits are held in small groups on Thursday evenings.</p>
+          <button class="push-button push-button--light" popovertarget="viewing-panel">
+            <span class="push-button__face">
+              Request a viewing
+              <span aria-hidden="true">↗</span>
+            </span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="wordmark" href="#top">Lumen</a>
+      <p>Original CSS craft study · 2026</p>
+    </footer>
+
+    <div class="viewing-panel" id="viewing-panel" popover aria-labelledby="panel-title">
+      <button
+        class="viewing-panel__close"
+        popovertarget="viewing-panel"
+        popovertargetaction="hide"
+        aria-label="Close viewing request"
+        autofocus
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+      <p class="eyebrow">Private viewing</p>
+      <h2 id="panel-title">Step into the light.</h2>
+      <p>
+        This native popover demonstrates action-specific motion: arrival is generous, dismissal is
+        quick, and reduced motion preserves the same state change without travel.
+      </p>
+      <a class="text-link text-link--dark" href="mailto:studio@example.invalid">
+        studio@example.invalid
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </body>
+</html>

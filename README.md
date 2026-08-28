@@ -22,10 +22,13 @@ It exists to capture reusable design principles, not one-size-fits-all templates
 - Use `templates/lesson-card.md` for new lesson ingestion.
 - Use `governance/checklist.md` before promoting or updating principles.
 - Use `playbooks/reference-first-design-sop.md` before material UI/UX implementation: inspect the local foundation, search suitable working references, and record keep/adapt/build decisions before importing or inventing components.
+- Use `patterns/css-solution-techniques.md` and the runnable Lumen craft lab to study and practice concrete CSS construction techniques.
+- Use the opt-in `kits/css-craft/` package when a downstream product has a proven need for one of those layout or interaction behaviors.
 
 ## Repository Structure
 - `principles/`: stable principle docs used across products.
 - `patterns/`: implementation patterns derived from principles.
+- `kits/`: functional, opt-in implementation packages distributed through the existing submodule.
 - `playbooks/`: repeatable workflows for application.
 - `ingestion/lessons/`: draft/promoted lesson cards from incoming material.
 - `decision-log/`: major design-system decisions and rationale.
@@ -38,6 +41,7 @@ It exists to capture reusable design principles, not one-size-fits-all templates
 - `templates/site-soul-brief.md`: per-project identity brief template.
 - `governance/checklist.md`: required quality gate for principle updates.
 - `playbooks/reference-first-design-sop.md`: required discovery and component-selection workflow for material downstream UI/UX work.
+- `kits/css-craft/`: behavior-only CSS package with a local package manifest, isolated modules, consumer example, and language exception.
 
 ## Content Policy
 This is a paraphrase-only repo for course-derived material.
@@ -54,6 +58,8 @@ This is a paraphrase-only repo for course-derived material.
   - local `docs/site-soul-brief.md`
 - Downstream UI/UX work must report the active local foundation, references inspected, keep/adapt/build/reject decisions, source provenance and license, and integrated accessibility/motion/performance verification.
 - New guidance reaches downstream repos when the submodule pointer is bumped and merged.
+- The CSS craft kit then becomes available at `design/rinshari-eye/kits/css-craft/`; projects may consume it as a local package or import individual modules directly.
+- The kit is never auto-imported. Availability is shared, while adoption remains product-specific and evidence-based.
 
 ## Agents Baseline Enforcement
 - Canonical `CORE-DOCTRINE` content is sourced from `templates/agents-baseline-doctrine.md`.
@@ -83,3 +89,8 @@ ops/sync-agents-baseline.sh --write --skip-dirty false --branch codex/custom-bas
 - `ops/bootstrap-downstream.sh`: bootstraps submodule + policy files + workflows in downstream repos.
 - `ops/sync-agents-baseline.sh`: manages and validates the canonical `CORE-DOCTRINE` baseline across repositories.
 - `scripts/new-lesson-draft.sh`: creates lesson-card drafts from paraphrased claims and evidence metadata.
+
+## Practical Examples
+- `patterns/css-solution-techniques.md`: practical pattern atlas distilled from solution-focused study.
+- `examples/lumen-craft-lab/`: original, dependency-free landing-page lab demonstrating the techniques in a coherent composition.
+- `kits/css-craft/`: reusable functional package containing the behavior primitives proven by the lab without its visual identity.

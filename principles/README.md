@@ -11,3 +11,4 @@ Current principles:
 - `000-foundations.md`
 - `001-seven-shadows-system.md`
 - `002-reference-before-invention.md`
+- `003-behavior-before-decoration.md`

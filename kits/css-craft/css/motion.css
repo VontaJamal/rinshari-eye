@@ -1,0 +1,27 @@
+@layer rse.motion {
+  :where(.rse-reveal) {
+    animation: rse-unfurl var(--rse-motion-enter-duration) var(--rse-ease-enter) both;
+    animation-delay: calc(var(--rse-reveal-index, 0) * var(--rse-motion-stagger));
+  }
+
+  @keyframes rse-unfurl {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0);
+      translate: 0 var(--rse-reveal-distance, 1rem);
+    }
+
+    to {
+      opacity: 1;
+      clip-path: inset(0);
+      translate: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.rse-reveal) {
+      animation-duration: 1ms;
+      animation-delay: 0ms;
+    }
+  }
+}

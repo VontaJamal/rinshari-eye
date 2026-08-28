@@ -1,0 +1,16 @@
+@layer rse.tokens {
+  :where(:root) {
+    --rse-content-max: 80rem;
+    --rse-page-gutter: clamp(1rem, 4vw, 4rem);
+    --rse-layout-gap: clamp(1.5rem, 4vw, 4rem);
+    --rse-flow-space: 1.25rem;
+    --rse-grid-min: 16rem;
+    --rse-sticky-top: 2rem;
+    --rse-motion-action-duration: 180ms;
+    --rse-motion-enter-duration: 420ms;
+    --rse-motion-exit-duration: 160ms;
+    --rse-motion-stagger: 80ms;
+    --rse-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+    --rse-ease-exit: ease-in;
+  }
+}

@@ -8,7 +8,7 @@ Before UI/UX work in downstream repos, complete all of the following:
 4. Summarize what exists, what must be preserved, and what conflicts with the intended change before proposing UI/UX edits.
 5. Inventory the active local component foundation, design tokens, required states, and tests; identify reusable implementation before proposing something new.
 6. State the specific user-facing or product gap and the assumption that would make the proposed change unnecessary.
-7. Read relevant docs in `design/rinshari-eye/principles/`, including `002-reference-before-invention.md` for material interface work.
+7. Read relevant docs in `design/rinshari-eye/principles/`, including `002-reference-before-invention.md` and `003-behavior-before-decoration.md` for material interface work.
 8. Read `design/rinshari-eye/playbooks/reference-first-design-sop.md` and local `docs/site-soul-brief.md`.
 9. Inspect suitable official component catalogs, registries, agent-readable indexes, source repositories, and live previews. Do not install during discovery.
 10. Record keep/adapt/build/reject decisions. For every selected external module, record canonical source, accessed version or commit, license and attribution, dependencies, security and performance cost, accessibility and motion risk, and Site Soul adaptations.

@@ -75,7 +75,7 @@ jobs:
             }
           done
 
-      - name: Validate reference-first design contract
+      - name: Validate reference-first and CSS craft resources
         shell: bash
         run: |
           set -euo pipefail
@@ -85,13 +85,49 @@ jobs:
 
           for required_file in \
             ingestion/lessons/2026-08-27-reference-first-component-composition.md \
+            ingestion/lessons/2026-08-28-css-craft-and-motion.md \
             principles/002-reference-before-invention.md \
-            playbooks/reference-first-design-sop.md; do
+            principles/003-behavior-before-decoration.md \
+            playbooks/reference-first-design-sop.md \
+            patterns/css-solution-techniques.md \
+            examples/lumen-craft-lab/README.md \
+            examples/lumen-craft-lab/index.html \
+            examples/lumen-craft-lab/styles.css \
+            kits/css-craft/package.json \
+            kits/css-craft/README.md \
+            kits/css-craft/LANGUAGE-EXCEPTION.md \
+            kits/css-craft/css/index.css \
+            kits/css-craft/css/tokens.css \
+            kits/css-craft/css/layout.css \
+            kits/css-craft/css/interaction.css \
+            kits/css-craft/css/motion.css \
+            kits/css-craft/examples/consumer.html; do
             [[ -s "$required_file" ]] || {
               echo "Reference-first contract file is missing or empty: $required_file" >&2
               exit 1
             }
           done
+
+          package_manifest="$(npm pack --dry-run --json ./kits/css-craft)"
+          PACKAGE_MANIFEST="$package_manifest" node -e '
+            const [pack] = JSON.parse(process.env.PACKAGE_MANIFEST);
+            const files = new Set(pack.files.map(({ path }) => path));
+            for (const required of [
+              "README.md",
+              "LANGUAGE-EXCEPTION.md",
+              "css/index.css",
+              "css/tokens.css",
+              "css/layout.css",
+              "css/interaction.css",
+              "css/motion.css",
+              "examples/consumer.html",
+              "package.json",
+            ]) {
+              if (!files.has(required)) {
+                throw new Error(`CSS craft package is missing ${required}`);
+              }
+            }
+          '
 
           grep -Fq 'playbooks/reference-first-design-sop.md' AGENTS.md
           grep -Fq '### Reference and Reuse Decision' templates/design-preflight.md
